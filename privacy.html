@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — NEMEXIS OFFICIAL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="nemexis-shared.css" />
+  <style>
+
+    /* ============================================================
+       NEMEXIS SIDEBAR NAV — SHARED
+    ============================================================ */
+    :root {
+      --bg-void: #04020e; --bg-deep: #07040f; --bg-card: #0c0820;
+      --bg-glass: rgba(12,8,32,0.75); --bg-glass-light: rgba(255,255,255,0.035);
+      --cyan: #00d4ff; --cyan-dim: rgba(0,212,255,0.12); --cyan-glow: rgba(0,212,255,0.5);
+      --purple: #a855f7; --purple-bright: #c026d3; --purple-dim: rgba(168,85,247,0.15);
+      --purple-glow: rgba(168,85,247,0.45); --blue: #1e6fff; --pink: #f72585;
+      --gold: #ffd60a; --green: #22c55e; --text-white: #f0eaff;
+      --text-sub: #b0a8cc; --text-dim: #6b5f88;
+      --border-glass: rgba(168,85,247,0.12); --border-cyan: rgba(0,212,255,0.2);
+      --border-bright: rgba(0,212,255,0.45); --border-purple: rgba(168,85,247,0.4);
+      --font-display: 'Syne', sans-serif; --font-body: 'Outfit', sans-serif;
+      --font-ui: 'Outfit', sans-serif;
+      --ease: cubic-bezier(0.4,0,0.2,1); --spring: cubic-bezier(0.34,1.56,0.64,1);
+      --transition: 0.32s cubic-bezier(0.4,0,0.2,1);
+    }
+    #sidenav {
+      position: fixed; top: 0; left: 0; bottom: 0; width: 220px; z-index: 1001;
+      background: rgba(4,2,14,0.97); border-right: 1px solid var(--border-glass);
+      backdrop-filter: blur(28px) saturate(1.5); -webkit-backdrop-filter: blur(28px) saturate(1.5);
+      display: flex; flex-direction: column; gap: 0;
+      transition: transform 0.35s var(--ease); box-shadow: 4px 0 40px rgba(0,0,0,0.45);
+    }
+    .sidenav-logo {
+      display: flex; align-items: center; gap: 10px; padding: 24px 20px 20px;
+      border-bottom: 1px solid var(--border-glass); text-decoration: none;
+    }
+    .sidenav-logo-icon {
+      width: 34px; height: 34px;
+      background: linear-gradient(135deg, var(--purple), var(--purple-bright));
+      border-radius: 9px; display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-weight: 900; font-size: 0.9rem; color: #fff;
+      box-shadow: 0 0 16px rgba(168,85,247,0.5); flex-shrink: 0;
+    }
+    .sidenav-logo-text {
+      font-family: var(--font-display); font-size: 0.9rem; font-weight: 800;
+      letter-spacing: 0.05em; color: var(--text-white);
+    }
+    .sidenav-logo-text .accent { color: var(--purple); }
+    .sidenav-login-btn {
+      display: flex; align-items: center; gap: 10px; padding: 12px 20px;
+      margin: 16px 14px 8px;
+      background: linear-gradient(135deg, rgba(168,85,247,0.15) 0%, rgba(192,38,211,0.1) 100%);
+      color: var(--purple); font-family: var(--font-display); font-size: 0.64rem;
+      font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      border-radius: 10px; border: 1px solid rgba(168,85,247,0.3); cursor: pointer;
+      transition: var(--transition); width: calc(100% - 28px); text-decoration: none;
+    }
+    .sidenav-login-btn:hover {
+      background: rgba(168,85,247,0.22); border-color: var(--purple);
+      box-shadow: 0 0 22px rgba(168,85,247,0.25);
+    }
+    .sidenav-section-label {
+      font-family: var(--font-display); font-size: 0.52rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim);
+      padding: 14px 20px 8px;
+    }
+    #sidenav ul { list-style: none; padding: 0 10px; display: flex; flex-direction: column; gap: 2px; flex: 1; }
+    #sidenav ul li a {
+      display: flex; align-items: center; gap: 12px; padding: 11px 14px;
+      border-radius: 9px; font-family: var(--font-display); font-size: 0.67rem;
+      font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+      color: var(--text-dim); text-decoration: none; transition: var(--transition); position: relative;
+    }
+    #sidenav ul li a i { font-size: 0.85rem; width: 18px; text-align: center; flex-shrink: 0; }
+    #sidenav ul li a:hover, #sidenav ul li a.active { color: var(--cyan); background: var(--cyan-dim); }
+    #sidenav ul li a.active::before {
+      content: ''; position: absolute; left: 0; top: 20%; bottom: 20%;
+      width: 2px; background: var(--cyan); border-radius: 2px; box-shadow: 0 0 8px var(--cyan);
+    }
+    .sidenav-bottom { padding: 16px 14px; border-top: 1px solid var(--border-glass); }
+    .sidenav-version { font-family: 'DM Mono', monospace; font-size: 0.55rem; color: var(--text-dim); letter-spacing: 0.04em; margin-bottom: 10px; }
+    body.has-sidenav { padding-left: 220px; }
+    /* Slim top header */
+    #header {
+      position: fixed; top: 0; left: 220px; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 64px;
+      background: rgba(4,2,14,0.85);
+      border-bottom: 1px solid var(--border-glass);
+      backdrop-filter: blur(24px) saturate(1.5);
+    }
+    .logo-wrap { display: none; }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .nav-cart-btn {
+      position: relative; width: 40px; height: 40px; background: var(--cyan-dim);
+      border: 1px solid var(--border-cyan); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--cyan); font-size: 0.95rem; cursor: pointer;
+      transition: var(--transition);
+    }
+    .nav-cart-btn:hover { border-color: var(--cyan); box-shadow: 0 0 18px rgba(0,212,255,0.25); }
+    .cart-badge {
+      position: absolute; top: -6px; right: -6px; min-width: 18px; height: 18px;
+      background: var(--purple-bright); border-radius: 9px; font-size: 0.6rem;
+      font-weight: 700; display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-ui); padding: 0 4px; box-shadow: 0 0 10px rgba(192,38,211,0.6);
+    }
+    .hamburger { display: none; flex-direction: column; gap: 5px; width: 28px; cursor: pointer; }
+    .hamburger span { display: block; height: 2px; border-radius: 2px; transition: var(--transition); }
+    .hamburger span:nth-child(1) { background: var(--purple); }
+    .hamburger span:nth-child(2) { background: var(--cyan); width: 70%; }
+    .hamburger span:nth-child(3) { background: var(--purple); }
+    @media (min-width: 769px) { #header .hamburger { display: none; } }
+    @media (max-width: 768px) {
+      body.has-sidenav { padding-left: 0; }
+      #header { left: 0; }
+      .logo-wrap { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+      .logo-icon {
+        width: 32px; height: 32px;
+        background: linear-gradient(135deg, var(--purple), var(--purple-bright));
+        border-radius: 9px; display: flex; align-items: center; justify-content: center;
+        font-family: var(--font-display); font-weight: 900; font-size: 0.85rem; color: #fff;
+      }
+      .logo-text { font-family: var(--font-display); font-size: 0.9rem; font-weight: 800; color: var(--text-white); }
+      .logo-text .accent { color: var(--purple); }
+      .hamburger { display: flex; }
+      #sidenav { transform: translateX(-100%); }
+      #sidenav.open { transform: translateX(0); }
+      .sidenav-overlay {
+        position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1000;
+        opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+      }
+      .sidenav-overlay.active { opacity: 1; pointer-events: all; }
+    }
+    /* page content below header */
+    .page-content-wrap { padding-top: 64px; }
+
+  </style>
+</head>
+<body class="has-sidenav">
+  <div class="sidenav-overlay" id="sidenavOverlay" onclick="closeSidenav()"></div>
+  <aside id="sidenav">
+    <a href="index.html" class="sidenav-logo">
+      <div class="sidenav-logo-icon">N</div>
+      <span class="sidenav-logo-text">NEME<span class="accent">XIS</span></span>
+    </a>
+    <a href="index.html" class="sidenav-login-btn">
+      <i class="fas fa-user-circle"></i>
+      <span>Login / Register</span>
+    </a>
+    <div class="sidenav-section-label">Navigation</div>
+    <ul>
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+      <li><a href="index.html#products"><i class="fas fa-gamepad"></i> Products</a></li>
+      <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+      <li><a href="Orders.html"><i class="fas fa-receipt"></i> My Orders</a></li>
+    </ul>
+    <div class="sidenav-bottom">
+      <div class="sidenav-version">⚡ NEMEXIS v3.0 · Gaming Store</div>
+    </div>
+  </aside>
+  <header id="header">
+    <a href="index.html" class="logo-wrap">
+      <div class="logo-icon">N</div>
+      <span class="logo-text">NEME<span class="accent">XIS</span></span>
+    </a>
+    <div class="nav-actions">
+      <div class="hamburger" onclick="toggleSidenav()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </header>
+
+
+<div class="bg-ambient"><div class="bg-orb orb-mid"></div></div>
+<div class="bg-grid"></div>
+<div class="bg-scan"></div>
+
+<!-- ── HEADER ──────────────────────────────────────────── -->
+
+
+
+<!-- ── PAGE HERO ────────────────────────────────────────── -->
+<section class="page-hero" style="padding-top:64px">
+  <div class="page-hero-eyebrow"><i class="fas fa-lock"></i> Legal</div>
+  <h1><span class="gradient-text">Privacy</span> Policy</h1>
+  <p>We value your trust and are committed to safeguarding your personal information. This policy explains exactly what we collect, how we use it, and your rights.</p>
+  <div class="page-hero-meta">
+    <span class="page-hero-meta-item"><i class="fas fa-calendar"></i> Effective: 1 January 2025</span>
+    <span class="page-hero-meta-item"><i class="fas fa-sync"></i> Last Updated: 1 June 2025</span>
+  </div>
+</section>
+
+<!-- ── CONTENT ───────────────────────────────────────────── -->
+<main class="page-content">
+
+  <div class="policy-section">
+    <div class="policy-section-icon"><i class="fas fa-eye"></i></div>
+    <h2>Overview</h2>
+    <p>NEMEXIS OFFICIAL ("we", "our", "us") operates the website nemexis.in and all associated services. This Privacy Policy governs the collection, use, storage, and disclosure of personal information provided by users ("you") when accessing or purchasing digital products on our platform.</p>
+    <p>By using our website or placing an order, you agree to the practices described in this policy. If you do not agree, please refrain from using our services.</p>
+    <div class="policy-callout info">
+      <div class="policy-callout-icon"><i class="fas fa-info-circle"></i></div>
+      <p>We do <strong>not</strong> sell, rent, or trade your personal data to third parties for marketing purposes. Your information is used solely to process your orders and improve our services.</p>
+    </div>
+  </div>
+
+  <div class="policy-section">
+    <div class="policy-section-icon"><i class="fas fa-database"></i></div>
+    <h2>Information We Collect</h2>
+    <h3>Information You Provide Directly</h3>
+    <ul>
+      <li><strong style="color:var(--text-white)">Account Registration:</strong> Full name, email address, and mobile number when you create an account.</li>
+      <li><strong style="color:var(--text-white)">Order Processing:</strong> In-game Player ID, Server ID (for applicable games), and the specific pack you select.</li>
+      <li><strong style="color:var(--text-white)">Payment Information:</strong> Payment is processed entirely by Razorpay. We do not receive or store your card numbers, UPI handles, or banking credentials.</li>
+      <li><strong style="color:var(--text-white)">Support Communications:</strong> Messages, queries, and feedback you send via email or WhatsApp.</li>
+    </ul>
+    <h3>Information Collected Automatically</h3>
+    <ul>
+      <li>IP address and approximate geographic location (country/city level)</li>
+      <li>Browser type, operating system, and device information</li>
+      <li>Pages visited, time spent, and navigation patterns on our website</li>
+      <li>Referral source (how you arrived at our website)</li>
+      <li>Session and cookie data (see our <a href="cookies.html" style="color:var(--cyan);text-decoration:underline">Cookie Policy</a>)</li>
+    </ul>
+  </div>
+
+  <div class="policy-section">
+    <div class="policy-section-icon"><i class="fas fa-cogs"></i></div>
+    <h2>How We Use Your Information</h2>
+    <p>We use the data we collect for the following purposes:</p>
+    <ul>
+      <li>To process and fulfil your digital top-up orders accurately and promptly</li>
+      <li>To verify your identity and maintain the security of your account</li>
+      <li>To send order confirmation, delivery status, and transaction receipts</li>
+      <li>To resolve disputes, investigate fraud, and enforce our Terms of Service</li>
+      <li>To respond to your support queries and improve customer experience</li>
+      <li>To improve website functionality, detect errors, and analyse traffic patterns</li>
+      <li>To send promotional communications (only with your explicit consent)</li>
+      <li>To comply with legal obligations under Indian law</li>
+    </ul>
+  </div>
+
+  <div class="policy-section">
+    <div class="policy-section-icon"><i class="fas fa-share-alt"></i></div>
+    <h2>Information Sharing</h2>
+    <p>We do not sell your personal data. We may share limited information with the following categories of third parties only as necessary to deliver our services:</p>
+    <table class="policy-table">
+      <thead>
+        <tr>
+          <th>Party</th>
+          <th>Purpose</th>
+          <th>Data Shared</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Razorpay</td>
+          <td>Payment processing</td>
+          <td>Name, email, order amount</td>
+        </tr>
+        <tr>
+          <td>Game Publishers (Moonton, KRAFTON, etc.)</td>
+          <td>Recharge delivery via API</td>
+          <td>Player ID, pack selected</td>
+        </tr>
+        <tr>
+          <td>Email / SMS Providers</td>
+          <td>Transactional notifications</td>
+          <td>Email address, phone number</td>
+        </tr>
+        <tr>
+          <td>Analytics Platforms</td>
+          <td>Site performance monitoring</td>
+          <td>Anonymised usage data only</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="policy-callout warn">
+      <div class="policy-callout-icon"><i class="fas fa-exclamation-triangle"></i></div>
+      <p>We may disclose your information if required by law, court order, or governmental authority, or to protect the rights and safety of NEMEXIS and its users.</p>
+    </div>
+  </div>
+
+  <div class="policy-section">
+    <div class="policy-section-icon"><i class="fas fa-clock"></i></div>
+    <h2>Data Retention</h2>
+    <p>We retain your personal data only for as long as necessary to fulfil the purposes described in this policy or as required by applicable law:</p>
+    <ul>
+      <li><strong style="color:var(--text-white)">Account data</strong> is retained for the lifetime of your account and deleted within 30 days of account deletion upon request.</li>
+      <li><strong style="color:var(--text-white)">Transaction records</strong> are retained for a minimum of 5 years in compliance with Indian tax and financial regulations.</li>
+      <li><strong style="color:var(--text-white)">Support communications</strong> are retained for up to 2 years for dispute resolution purposes.</li>
+      <li><strong style="color:var(--text-white)">Log data</strong> (IP addresses, page visits) is retained for up to 90 days.</li>
+    </ul>
+  </div>
+
+  <div class="policy-section">
+    <div class="policy-section-icon"><i class="fas fa-shield-alt"></i></div>
+    <h2>Data Security</h2>
+    <p>We implement industry-standard security measures to protect your personal information:</p>
+    <ul class="check-list">
+      <li><i class="fas fa-check-circle"></i> All data in transit is encrypted using TLS/SSL protocols</li>
+      <li><i class="fas fa-check-circle"></i> Passwords are hashed using bcrypt — we never store plain-text passwords</li>
+      <li><i class="fas fa-check-circle"></i> Payment processing is entirely handled by Razorpay (PCI-DSS Level 1 compliant)</li>
+      <li><i class="fas fa-check-circle"></i> Access to personal data is restricted to authorised personnel only</li>
+      <li><i class="fas fa-check-circle"></i> Regular security audits and vulnerability assessments are conducted</li>
+    </ul>
+    <p>Despite these measures, no system is 100% immune to security risks. In the event of a data breach affecting your rights, we will notify you and the relevant authorities as required by law.</p>
+  </div>
+
+  <div class="policy-section">
+    <div class="policy-section-icon"><i class="fas fa-user-check"></i></div>
+    <h2>Your Rights</h2>
+    <p>As a user, you have the following rights regarding your personal data:</p>
+    <ul>
+      <li><strong style="color:var(--text-white)">Right to Access:</strong> Request a copy of the personal data we hold about you.</li>
+      <li><strong style="color:var(--text-white)">Right to Correction:</strong> Request correction of inaccurate or incomplete information.</li>
+      <li><strong style="color:var(--text-white)">Right to Deletion:</strong> Request deletion of your account and associated data (subject to legal retention requirements).</li>
+      <li><strong style="color:var(--text-white)">Right to Withdraw Consent:</strong> Opt out of marketing communications at any time.</li>
+      <li><strong style="color:var(--text-white)">Right to Portability:</strong> Request your data in a machine-readable format.</li>
+    </ul>
+    <p>To exercise any of these rights, contact us at <strong style="color:var(--cyan)">nemexisz999@gmail.com</strong> with the subject line "Privacy Request". We will respond within 30 days.</p>
+  </div>
+
+  <div class="policy-section">
+    <div class="policy-section-icon"><i class="fas fa-child"></i></div>
+    <h2>Children's Privacy</h2>
+    <p>Our services are not directed at individuals under the age of 13. We do not knowingly collect personal information from children. If you believe a child has provided us with personal data, please contact us immediately and we will delete it promptly.</p>
+    <p>Users between the ages of 13 and 18 must obtain parental or guardian consent before creating an account or making purchases on NEMEXIS.</p>
+  </div>
+
+  <div class="policy-section">
+    <div class="policy-section-icon"><i class="fas fa-pen"></i></div>
+    <h2>Changes to This Policy</h2>
+    <p>We may update this Privacy Policy from time to time to reflect changes in our practices, technology, or legal requirements. When we make material changes, we will update the "Last Updated" date at the top of this page and, where appropriate, notify you via email.</p>
+    <p>Continued use of our services after any changes constitutes your acceptance of the updated policy.</p>
+    <div class="policy-callout info">
+      <div class="policy-callout-icon"><i class="fas fa-envelope"></i></div>
+      <p>Questions about this Privacy Policy? Reach us at <strong>nemexisz999@gmail.com</strong> or via WhatsApp at <strong>+91 70999 74271</strong>.</p>
+    </div>
+  </div>
+
+</main>
+
+<!-- ── FOOTER ──────────────────────────────────────────────── -->
+
+
+<a href="https://wa.me/917099974271" target="_blank" class="wa-float" aria-label="Chat on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('header').classList.toggle('scrolled', window.scrollY > 20);
+  });
+  function toggleMobileNav() {
+    document.getElementById('mobileNav').classList.toggle('open');
+  }
+</script>
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h2>NEME<span class="accent">XIS</span> OFFICIAL</h2>
+        <p>India's trusted gaming top-up platform. We power up your game with instant MLBB diamonds, BGMI UC, Genshin crystals, and more — at the best prices.</p>
+        <div class="footer-contact">
+          <p><i class="fas fa-phone" style="color:var(--purple);margin-right:8px"></i>+91 70999 74271</p>
+          <p><i class="fas fa-envelope" style="color:var(--purple);margin-right:8px"></i>nemexisz999@gmail.com</p>
+        </div>
+        <div class="social-row">
+          <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/917099974271" target="_blank" class="social-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" class="social-btn" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+          <a href="#" class="social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#products">Games</a></li>
+          <li><a href="Orders.html">My Orders</a></li>
+          <li><a href="contact.html">Customer Support</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms &amp; Conditions</a></li>
+          <li><a href="refund.html">Refund Policy</a></li>
+          <li><a href="cookies.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Payments</h4>
+        <div class="footer-pay-chips">
+          <span class="footer-pay-chip">GPay</span>
+          <span class="footer-pay-chip">PhonePe</span>
+          <span class="footer-pay-chip">BHIM UPI</span>
+          <span class="footer-pay-chip">Razorpay</span>
+          <span class="footer-pay-chip">Cards</span>
+          <span class="footer-pay-chip">Net Banking</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Nemexis Official. All rights reserved. Made with ❤️ for gamers in India.</p>
+      <div class="footer-bottom-links">
+        <a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refund</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleSidenav() {
+      document.getElementById('sidenav').classList.toggle('open');
+      document.getElementById('sidenavOverlay').classList.toggle('active');
+    }
+    function closeSidenav() {
+      document.getElementById('sidenav').classList.remove('open');
+      document.getElementById('sidenavOverlay').classList.remove('active');
+    }
+    window.addEventListener('scroll', () => {
+      document.getElementById('header').classList.toggle('scrolled', window.scrollY > 60);
+    });
+  </script>
+
+</body>
+</html>

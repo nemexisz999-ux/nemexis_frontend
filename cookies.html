@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cookie Policy — NEMEXIS OFFICIAL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="nemexis-shared.css" />
+  <style>
+
+    /* ============================================================
+       NEMEXIS SIDEBAR NAV — SHARED
+    ============================================================ */
+    :root {
+      --bg-void: #04020e; --bg-deep: #07040f; --bg-card: #0c0820;
+      --bg-glass: rgba(12,8,32,0.75); --bg-glass-light: rgba(255,255,255,0.035);
+      --cyan: #00d4ff; --cyan-dim: rgba(0,212,255,0.12); --cyan-glow: rgba(0,212,255,0.5);
+      --purple: #a855f7; --purple-bright: #c026d3; --purple-dim: rgba(168,85,247,0.15);
+      --purple-glow: rgba(168,85,247,0.45); --blue: #1e6fff; --pink: #f72585;
+      --gold: #ffd60a; --green: #22c55e; --text-white: #f0eaff;
+      --text-sub: #b0a8cc; --text-dim: #6b5f88;
+      --border-glass: rgba(168,85,247,0.12); --border-cyan: rgba(0,212,255,0.2);
+      --border-bright: rgba(0,212,255,0.45); --border-purple: rgba(168,85,247,0.4);
+      --font-display: 'Syne', sans-serif; --font-body: 'Outfit', sans-serif;
+      --font-ui: 'Outfit', sans-serif;
+      --ease: cubic-bezier(0.4,0,0.2,1); --spring: cubic-bezier(0.34,1.56,0.64,1);
+      --transition: 0.32s cubic-bezier(0.4,0,0.2,1);
+    }
+    #sidenav {
+      position: fixed; top: 0; left: 0; bottom: 0; width: 220px; z-index: 1001;
+      background: rgba(4,2,14,0.97); border-right: 1px solid var(--border-glass);
+      backdrop-filter: blur(28px) saturate(1.5); -webkit-backdrop-filter: blur(28px) saturate(1.5);
+      display: flex; flex-direction: column; gap: 0;
+      transition: transform 0.35s var(--ease); box-shadow: 4px 0 40px rgba(0,0,0,0.45);
+    }
+    .sidenav-logo {
+      display: flex; align-items: center; gap: 10px; padding: 24px 20px 20px;
+      border-bottom: 1px solid var(--border-glass); text-decoration: none;
+    }
+    .sidenav-logo-icon {
+      width: 34px; height: 34px;
+      background: linear-gradient(135deg, var(--purple), var(--purple-bright));
+      border-radius: 9px; display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-weight: 900; font-size: 0.9rem; color: #fff;
+      box-shadow: 0 0 16px rgba(168,85,247,0.5); flex-shrink: 0;
+    }
+    .sidenav-logo-text {
+      font-family: var(--font-display); font-size: 0.9rem; font-weight: 800;
+      letter-spacing: 0.05em; color: var(--text-white);
+    }
+    .sidenav-logo-text .accent { color: var(--purple); }
+    .sidenav-login-btn {
+      display: flex; align-items: center; gap: 10px; padding: 12px 20px;
+      margin: 16px 14px 8px;
+      background: linear-gradient(135deg, rgba(168,85,247,0.15) 0%, rgba(192,38,211,0.1) 100%);
+      color: var(--purple); font-family: var(--font-display); font-size: 0.64rem;
+      font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      border-radius: 10px; border: 1px solid rgba(168,85,247,0.3); cursor: pointer;
+      transition: var(--transition); width: calc(100% - 28px); text-decoration: none;
+    }
+    .sidenav-login-btn:hover {
+      background: rgba(168,85,247,0.22); border-color: var(--purple);
+      box-shadow: 0 0 22px rgba(168,85,247,0.25);
+    }
+    .sidenav-section-label {
+      font-family: var(--font-display); font-size: 0.52rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim);
+      padding: 14px 20px 8px;
+    }
+    #sidenav ul { list-style: none; padding: 0 10px; display: flex; flex-direction: column; gap: 2px; flex: 1; }
+    #sidenav ul li a {
+      display: flex; align-items: center; gap: 12px; padding: 11px 14px;
+      border-radius: 9px; font-family: var(--font-display); font-size: 0.67rem;
+      font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+      color: var(--text-dim); text-decoration: none; transition: var(--transition); position: relative;
+    }
+    #sidenav ul li a i { font-size: 0.85rem; width: 18px; text-align: center; flex-shrink: 0; }
+    #sidenav ul li a:hover, #sidenav ul li a.active { color: var(--cyan); background: var(--cyan-dim); }
+    #sidenav ul li a.active::before {
+      content: ''; position: absolute; left: 0; top: 20%; bottom: 20%;
+      width: 2px; background: var(--cyan); border-radius: 2px; box-shadow: 0 0 8px var(--cyan);
+    }
+    .sidenav-bottom { padding: 16px 14px; border-top: 1px solid var(--border-glass); }
+    .sidenav-version { font-family: 'DM Mono', monospace; font-size: 0.55rem; color: var(--text-dim); letter-spacing: 0.04em; margin-bottom: 10px; }
+    body.has-sidenav { padding-left: 220px; }
+    /* Slim top header */
+    #header {
+      position: fixed; top: 0; left: 220px; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 64px;
+      background: rgba(4,2,14,0.85);
+      border-bottom: 1px solid var(--border-glass);
+      backdrop-filter: blur(24px) saturate(1.5);
+    }
+    .logo-wrap { display: none; }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .nav-cart-btn {
+      position: relative; width: 40px; height: 40px; background: var(--cyan-dim);
+      border: 1px solid var(--border-cyan); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--cyan); font-size: 0.95rem; cursor: pointer;
+      transition: var(--transition);
+    }
+    .nav-cart-btn:hover { border-color: var(--cyan); box-shadow: 0 0 18px rgba(0,212,255,0.25); }
+    .cart-badge {
+      position: absolute; top: -6px; right: -6px; min-width: 18px; height: 18px;
+      background: var(--purple-bright); border-radius: 9px; font-size: 0.6rem;
+      font-weight: 700; display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-ui); padding: 0 4px; box-shadow: 0 0 10px rgba(192,38,211,0.6);
+    }
+    .hamburger { display: none; flex-direction: column; gap: 5px; width: 28px; cursor: pointer; }
+    .hamburger span { display: block; height: 2px; border-radius: 2px; transition: var(--transition); }
+    .hamburger span:nth-child(1) { background: var(--purple); }
+    .hamburger span:nth-child(2) { background: var(--cyan); width: 70%; }
+    .hamburger span:nth-child(3) { background: var(--purple); }
+    @media (min-width: 769px) { #header .hamburger { display: none; } }
+    @media (max-width: 768px) {
+      body.has-sidenav { padding-left: 0; }
+      #header { left: 0; }
+      .logo-wrap { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+      .logo-icon {
+        width: 32px; height: 32px;
+        background: linear-gradient(135deg, var(--purple), var(--purple-bright));
+        border-radius: 9px; display: flex; align-items: center; justify-content: center;
+        font-family: var(--font-display); font-weight: 900; font-size: 0.85rem; color: #fff;
+      }
+      .logo-text { font-family: var(--font-display); font-size: 0.9rem; font-weight: 800; color: var(--text-white); }
+      .logo-text .accent { color: var(--purple); }
+      .hamburger { display: flex; }
+      #sidenav { transform: translateX(-100%); }
+      #sidenav.open { transform: translateX(0); }
+      .sidenav-overlay {
+        position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1000;
+        opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+      }
+      .sidenav-overlay.active { opacity: 1; pointer-events: all; }
+    }
+    /* page content below header */
+    .page-content-wrap { padding-top: 64px; }
+
+  </style>
+</head>
+<body class="has-sidenav">
+  <div class="sidenav-overlay" id="sidenavOverlay" onclick="closeSidenav()"></div>
+  <aside id="sidenav">
+    <a href="index.html" class="sidenav-logo">
+      <div class="sidenav-logo-icon">N</div>
+      <span class="sidenav-logo-text">NEME<span class="accent">XIS</span></span>
+    </a>
+    <a href="index.html" class="sidenav-login-btn">
+      <i class="fas fa-user-circle"></i>
+      <span>Login / Register</span>
+    </a>
+    <div class="sidenav-section-label">Navigation</div>
+    <ul>
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+      <li><a href="index.html#products"><i class="fas fa-gamepad"></i> Products</a></li>
+      <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+      <li><a href="Orders.html"><i class="fas fa-receipt"></i> My Orders</a></li>
+    </ul>
+    <div class="sidenav-bottom">
+      <div class="sidenav-version">⚡ NEMEXIS v3.0 · Gaming Store</div>
+    </div>
+  </aside>
+  <header id="header">
+    <a href="index.html" class="logo-wrap">
+      <div class="logo-icon">N</div>
+      <span class="logo-text">NEME<span class="accent">XIS</span></span>
+    </a>
+    <div class="nav-actions">
+      <div class="hamburger" onclick="toggleSidenav()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </header>
+
+
+<div class="bg-ambient"><div class="bg-orb orb-mid"></div></div>
+<div class="bg-grid"></div>
+<div class="bg-scan"></div>
+
+<!-- ── HEADER ──────────────────────────────────────────── -->
+
+
+
+<!-- ── PAGE HERO ────────────────────────────────────────── -->
+<section class="page-hero" style="padding-top:64px">
+  <div class="page-hero-eyebrow"><i class="fas fa-cookie-bite"></i> Legal</div>
+  <h1>Cookie <span class="gradient-text">Policy</span></h1>
+  <p>This policy explains what cookies are, how NEMEXIS uses them, and the choices you have regarding your cookie preferences.</p>
+  <div class="page-hero-meta">
+    <span class="page-hero-meta-item"><i class="fas fa-calendar"></i> Effective: 1 January 2025</span>
+    <span class="page-hero-meta-item"><i class="fas fa-sync"></i> Last Updated: 1 June 2025</span>
+  </div>
+</section>
+
+<!-- ── CONTENT ───────────────────────────────────────────── -->
+<main class="page-content">
+
+  <div class="policy-section">
+    <div class="policy-section-icon"><i class="fas fa-question-circle"></i></div>
+    <h2>What Are Cookies?</h2>
+    <p>Cookies are small text files that are placed on your device (computer, tablet, or mobile phone) when you visit a website. They are widely used to make websites work more efficiently, provide a personalised experience, and give website owners analytical information about how their site is used.</p>
+    <p>Cookies do not contain personally identifying information on their own, but they may be linked to personal data we hold about you (such as your logged-in account). Cookies cannot run programs or deliver viruses to your device.</p>
+    <div class="policy-callout info">
+      <div class="policy-callout-icon"><i class="fas fa-info-circle"></i></div>
+      <p>NEMEXIS uses cookies to keep you signed in, remember your preferences, and help us understand how users navigate our platform so we can improve it. <strong>We do not use cookies to serve third-party advertisements.</strong></p>
+    </div>
+  </div>
+
+  <div class="policy-section">
+    <div class="policy-section-icon"><i class="fas fa-list-ul"></i></div>
+    <h2>Types of Cookies We Use</h2>
+    <p>We use the following categories of cookies on the NEMEXIS platform:</p>
+
+    <!-- Cookie: Essential -->
+    <div style="margin-top:24px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+        <span class="policy-badge green"><i class="fas fa-lock"></i> Essential</span>
+        <span style="font-size:0.8rem;color:var(--text-dim)">Always Active — Cannot be disabled</span>
+      </div>
+      <p>These cookies are strictly necessary for the website to function. They enable core features such as authentication, order session management, and payment flow. Without these cookies, services you have requested (such as staying logged in) cannot be provided.</p>
+      <table class="policy-table" style="margin-top:14px">
+        <thead><tr><th>Cookie Name</th><th>Purpose</th><th>Duration</th></tr></thead>
+        <tbody>
+          <tr><td>nemexis_session</td><td>Maintains your login session</td><td>Session</td></tr>
+          <tr><td>nemexis_token</td><td>JWT authentication token (localStorage)</td><td>7 days</td></tr>
+          <tr><td>razorpay_*</td><td>Razorpay payment flow integrity</td><td>Session</td></tr>
+          <tr><td>csrf_token</td><td>Cross-site request forgery protection</td><td>Session</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Cookie: Functional -->
+    <div style="margin-top:32px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+        <span class="policy-badge cyan"><i class="fas fa-cogs"></i> Functional</span>
+        <span style="font-size:0.8rem;color:var(--text-dim)">Recommended — Enabled by default</span>
+      </div>
+      <p>Functional cookies enhance your experience by remembering your preferences and choices. They are not essential to the operation of the site, but disabling them may reduce the quality of your experience.</p>
+      <table class="policy-table" style="margin-top:14px">
+        <thead><tr><th>Cookie Name</th><th>Purpose</th><th>Duration</th></tr></thead>
+        <tbody>
+          <tr><td>nemexis_theme</td><td>Remembers your UI preference (dark mode)</td><td>1 year</td></tr>
+          <tr><td>nemexis_cart</td><td>Preserves cart contents between visits</td><td>7 days</td></tr>
+          <tr><td>nemexis_last_game</td><td>Remembers last game category viewed</td><td>30 days</td></tr>
+          <tr><td>cookie_consent</td><td>Stores your cookie preferences</td><td>1 year</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Cookie: Analytics -->
+    <div style="margin-top:32px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+        <span class="policy-badge purple"><i class="fas fa-chart-bar"></i> Analytics</span>
+        <span style="font-size:0.8rem;color:var(--text-dim)">Optional — Can be disabled</span>
+      </div>
+      <p>Analytics cookies help us understand how visitors interact with our website by collecting and reporting information anonymously. This data helps us improve page performance, navigation, and content.</p>
+      <table class="policy-table" style="margin-top:14px">
+        <thead><tr><th>Cookie Name</th><th>Purpose</th><th>Duration</th></tr></thead>
+        <tbody>
+          <tr><td>_ga, _ga_*</td><td>Google Analytics — visitor tracking</td><td>2 years</td></tr>
+          <tr><td>_gid</td><td>Google Analytics — session tracking</td><td>24 hours</td></tr>
+          <tr><td>_gat</td><td>Google Analytics — throttle request rate</td><td>1 minute</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Preferences Panel -->
+  <div class="policy-section">
+    <div class="policy-section-icon"><i class="fas fa-sliders-h"></i></div>
+    <h2>Your Cookie Preferences</h2>
+    <p>You can manage your cookie preferences below. Essential cookies cannot be disabled as they are required for the site to function correctly.</p>
+
+    <div style="margin-top:24px">
+      <!-- Essential -->
+      <div class="cookie-row">
+        <div class="cookie-row-info">
+          <h4>Essential Cookies</h4>
+          <p>Required for login, order processing, and payment security. Cannot be turned off.</p>
+        </div>
+        <div class="cookie-toggle locked on" title="Always active"></div>
+      </div>
+
+      <!-- Functional -->
+      <div class="cookie-row">
+        <div class="cookie-row-info">
+          <h4>Functional Cookies</h4>
+          <p>Enhance your experience by remembering your preferences and cart contents.</p>
+        </div>
+        <div class="cookie-toggle on" id="toggleFunctional" onclick="toggleCookie(this)" title="Click to toggle"></div>
+      </div>
+
+      <!-- Analytics -->
+      <div class="cookie-row">
+        <div class="cookie-row-info">
+          <h4>Analytics Cookies</h4>
+          <p>Help us understand how visitors use the site so we can improve performance and content.</p>
+        </div>
+        <div class="cookie-toggle on" id="toggleAnalytics" onclick="toggleCookie(this)" title="Click to toggle"></div>
+      </div>
+    </div>
+
+    <div style="margin-top:20px;display:flex;gap:12px;flex-wrap:wrap">
+      <button onclick="savePreferences()" style="
+        display:inline-flex;align-items:center;gap:8px;
+        padding:11px 26px;
+        background:linear-gradient(135deg,var(--purple),var(--purple-bright));
+        color:#fff;font-family:var(--font-display);
+        font-size:0.68rem;font-weight:700;
+        letter-spacing:0.06em;text-transform:uppercase;
+        border-radius:8px;border:none;cursor:pointer;
+        transition:0.3s;
+        box-shadow:0 0 20px rgba(168,85,247,0.4);
+      " onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 0 32px rgba(168,85,247,0.6)'"
+         onmouseout="this.style.transform='';this.style.boxShadow='0 0 20px rgba(168,85,247,0.4)'">
+        <i class="fas fa-save"></i> Save Preferences
+      </button>
+      <button onclick="acceptAll()" style="
+        display:inline-flex;align-items:center;gap:8px;
+        padding:10px 22px;
+        background:rgba(0,212,255,0.08);color:var(--cyan);
+        font-family:var(--font-display);
+        font-size:0.68rem;font-weight:700;
+        letter-spacing:0.06em;text-transform:uppercase;
+        border-radius:8px;border:1px solid rgba(0,212,255,0.3);cursor:pointer;
+        transition:0.3s;
+      " onmouseover="this.style.background='rgba(0,212,255,0.15)'"
+         onmouseout="this.style.background='rgba(0,212,255,0.08)'">
+        <i class="fas fa-check"></i> Accept All
+      </button>
+    </div>
+    <p id="prefSavedMsg" style="display:none;margin-top:14px;font-size:0.82rem;color:var(--green)">
+      <i class="fas fa-check-circle"></i> Your preferences have been saved.
+    </p>
+  </div>
+
+  <!-- Third Party Cookies -->
+  <div class="policy-section">
+    <div class="policy-section-icon"><i class="fas fa-globe"></i></div>
+    <h2>Third-Party Cookies</h2>
+    <p>When you visit NEMEXIS, certain third-party services may also set cookies on your device. These third parties have their own privacy and cookie policies, and we encourage you to review them:</p>
+    <ul>
+      <li><strong style="color:var(--text-white)">Razorpay</strong> — Sets session cookies required for secure payment processing. <a href="https://razorpay.com/privacy/" target="_blank" style="color:var(--cyan)">View Razorpay Privacy Policy →</a></li>
+      <li><strong style="color:var(--text-white)">Google Analytics</strong> — Sets analytics cookies to help us understand visitor behaviour anonymously. <a href="https://policies.google.com/privacy" target="_blank" style="color:var(--cyan)">View Google Privacy Policy →</a></li>
+      <li><strong style="color:var(--text-white)">Font Awesome / Google Fonts</strong> — CDN resources that may log standard request metadata. No personal data is retained.</li>
+    </ul>
+    <p>We do not use cookies from advertising networks or social media trackers on NEMEXIS.</p>
+  </div>
+
+  <!-- Browser Controls -->
+  <div class="policy-section">
+    <div class="policy-section-icon"><i class="fas fa-browser"></i></div>
+    <h2>Managing Cookies via Your Browser</h2>
+    <p>Most browsers allow you to view, manage, delete, and block cookies through their settings. Here is how to access cookie settings in major browsers:</p>
+    <ul class="check-list">
+      <li><i class="fas fa-circle" style="color:var(--text-dim);font-size:0.5rem;margin-top:6px"></i><strong style="color:var(--text-white)">Google Chrome:</strong> Settings → Privacy and Security → Cookies and other site data</li>
+      <li><i class="fas fa-circle" style="color:var(--text-dim);font-size:0.5rem;margin-top:6px"></i><strong style="color:var(--text-white)">Mozilla Firefox:</strong> Settings → Privacy &amp; Security → Cookies and Site Data</li>
+      <li><i class="fas fa-circle" style="color:var(--text-dim);font-size:0.5rem;margin-top:6px"></i><strong style="color:var(--text-white)">Safari:</strong> Preferences → Privacy → Manage Website Data</li>
+      <li><i class="fas fa-circle" style="color:var(--text-dim);font-size:0.5rem;margin-top:6px"></i><strong style="color:var(--text-white)">Microsoft Edge:</strong> Settings → Privacy, Search, and Services → Cookies and site permissions</li>
+    </ul>
+    <div class="policy-callout warn">
+      <div class="policy-callout-icon"><i class="fas fa-exclamation-triangle"></i></div>
+      <p>Disabling essential cookies through your browser settings may prevent you from logging in, completing orders, or accessing certain features of NEMEXIS. We recommend using our preference panel above instead of blocking all cookies at the browser level.</p>
+    </div>
+  </div>
+
+  <!-- Changes -->
+  <div class="policy-section">
+    <div class="policy-section-icon"><i class="fas fa-pen"></i></div>
+    <h2>Changes to This Policy</h2>
+    <p>We may update this Cookie Policy from time to time as we add new features or as regulations change. We will notify you of significant changes by updating the "Last Updated" date at the top of this page. Continued use of our website after updates constitutes acceptance of the revised policy.</p>
+    <div class="policy-callout info">
+      <div class="policy-callout-icon"><i class="fas fa-envelope"></i></div>
+      <p>Questions about our use of cookies? Contact us at <strong>nemexisz999@gmail.com</strong> or via WhatsApp at <strong>+91 70999 74271</strong>.</p>
+    </div>
+  </div>
+
+</main>
+
+<!-- ── FOOTER ──────────────────────────────────────────────── -->
+
+
+<a href="https://wa.me/917099974271" target="_blank" class="wa-float" aria-label="Chat on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('header').classList.toggle('scrolled', window.scrollY > 20);
+  });
+  function toggleMobileNav() {
+    document.getElementById('mobileNav').classList.toggle('open');
+  }
+  function toggleCookie(el) {
+    el.classList.toggle('on');
+  }
+  function savePreferences() {
+    const prefs = {
+      functional: document.getElementById('toggleFunctional').classList.contains('on'),
+      analytics:  document.getElementById('toggleAnalytics').classList.contains('on'),
+    };
+    localStorage.setItem('nemexis_cookie_prefs', JSON.stringify(prefs));
+    const msg = document.getElementById('prefSavedMsg');
+    msg.style.display = 'block';
+    setTimeout(() => { msg.style.display = 'none'; }, 3500);
+  }
+  function acceptAll() {
+    document.getElementById('toggleFunctional').classList.add('on');
+    document.getElementById('toggleAnalytics').classList.add('on');
+    savePreferences();
+  }
+  // Load saved preferences on page load
+  (function() {
+    try {
+      const saved = JSON.parse(localStorage.getItem('nemexis_cookie_prefs'));
+      if (saved) {
+        if (!saved.functional) document.getElementById('toggleFunctional').classList.remove('on');
+        if (!saved.analytics)  document.getElementById('toggleAnalytics').classList.remove('on');
+      }
+    } catch(e) {}
+  })();
+</script>
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h2>NEME<span class="accent">XIS</span> OFFICIAL</h2>
+        <p>India's trusted gaming top-up platform. We power up your game with instant MLBB diamonds, BGMI UC, Genshin crystals, and more — at the best prices.</p>
+        <div class="footer-contact">
+          <p><i class="fas fa-phone" style="color:var(--purple);margin-right:8px"></i>+91 70999 74271</p>
+          <p><i class="fas fa-envelope" style="color:var(--purple);margin-right:8px"></i>nemexisz999@gmail.com</p>
+        </div>
+        <div class="social-row">
+          <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/917099974271" target="_blank" class="social-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" class="social-btn" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+          <a href="#" class="social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#products">Games</a></li>
+          <li><a href="Orders.html">My Orders</a></li>
+          <li><a href="contact.html">Customer Support</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms &amp; Conditions</a></li>
+          <li><a href="refund.html">Refund Policy</a></li>
+          <li><a href="cookies.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Payments</h4>
+        <div class="footer-pay-chips">
+          <span class="footer-pay-chip">GPay</span>
+          <span class="footer-pay-chip">PhonePe</span>
+          <span class="footer-pay-chip">BHIM UPI</span>
+          <span class="footer-pay-chip">Razorpay</span>
+          <span class="footer-pay-chip">Cards</span>
+          <span class="footer-pay-chip">Net Banking</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Nemexis Official. All rights reserved. Made with ❤️ for gamers in India.</p>
+      <div class="footer-bottom-links">
+        <a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refund</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleSidenav() {
+      document.getElementById('sidenav').classList.toggle('open');
+      document.getElementById('sidenavOverlay').classList.toggle('active');
+    }
+    function closeSidenav() {
+      document.getElementById('sidenav').classList.remove('open');
+      document.getElementById('sidenavOverlay').classList.remove('active');
+    }
+    window.addEventListener('scroll', () => {
+      document.getElementById('header').classList.toggle('scrolled', window.scrollY > 60);
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms &amp; Conditions — NEMEXIS OFFICIAL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="nemexis-shared.css" />
+  <style>
+
+    /* ============================================================
+       NEMEXIS SIDEBAR NAV — SHARED
+    ============================================================ */
+    :root {
+      --bg-void: #04020e; --bg-deep: #07040f; --bg-card: #0c0820;
+      --bg-glass: rgba(12,8,32,0.75); --bg-glass-light: rgba(255,255,255,0.035);
+      --cyan: #00d4ff; --cyan-dim: rgba(0,212,255,0.12); --cyan-glow: rgba(0,212,255,0.5);
+      --purple: #a855f7; --purple-bright: #c026d3; --purple-dim: rgba(168,85,247,0.15);
+      --purple-glow: rgba(168,85,247,0.45); --blue: #1e6fff; --pink: #f72585;
+      --gold: #ffd60a; --green: #22c55e; --text-white: #f0eaff;
+      --text-sub: #b0a8cc; --text-dim: #6b5f88;
+      --border-glass: rgba(168,85,247,0.12); --border-cyan: rgba(0,212,255,0.2);
+      --border-bright: rgba(0,212,255,0.45); --border-purple: rgba(168,85,247,0.4);
+      --font-display: 'Syne', sans-serif; --font-body: 'Outfit', sans-serif;
+      --font-ui: 'Outfit', sans-serif;
+      --ease: cubic-bezier(0.4,0,0.2,1); --spring: cubic-bezier(0.34,1.56,0.64,1);
+      --transition: 0.32s cubic-bezier(0.4,0,0.2,1);
+    }
+    #sidenav {
+      position: fixed; top: 0; left: 0; bottom: 0; width: 220px; z-index: 1001;
+      background: rgba(4,2,14,0.97); border-right: 1px solid var(--border-glass);
+      backdrop-filter: blur(28px) saturate(1.5); -webkit-backdrop-filter: blur(28px) saturate(1.5);
+      display: flex; flex-direction: column; gap: 0;
+      transition: transform 0.35s var(--ease); box-shadow: 4px 0 40px rgba(0,0,0,0.45);
+    }
+    .sidenav-logo {
+      display: flex; align-items: center; gap: 10px; padding: 24px 20px 20px;
+      border-bottom: 1px solid var(--border-glass); text-decoration: none;
+    }
+    .sidenav-logo-icon {
+      width: 34px; height: 34px;
+      background: linear-gradient(135deg, var(--purple), var(--purple-bright));
+      border-radius: 9px; display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-weight: 900; font-size: 0.9rem; color: #fff;
+      box-shadow: 0 0 16px rgba(168,85,247,0.5); flex-shrink: 0;
+    }
+    .sidenav-logo-text {
+      font-family: var(--font-display); font-size: 0.9rem; font-weight: 800;
+      letter-spacing: 0.05em; color: var(--text-white);
+    }
+    .sidenav-logo-text .accent { color: var(--purple); }
+    .sidenav-login-btn {
+      display: flex; align-items: center; gap: 10px; padding: 12px 20px;
+      margin: 16px 14px 8px;
+      background: linear-gradient(135deg, rgba(168,85,247,0.15) 0%, rgba(192,38,211,0.1) 100%);
+      color: var(--purple); font-family: var(--font-display); font-size: 0.64rem;
+      font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      border-radius: 10px; border: 1px solid rgba(168,85,247,0.3); cursor: pointer;
+      transition: var(--transition); width: calc(100% - 28px); text-decoration: none;
+    }
+    .sidenav-login-btn:hover {
+      background: rgba(168,85,247,0.22); border-color: var(--purple);
+      box-shadow: 0 0 22px rgba(168,85,247,0.25);
+    }
+    .sidenav-section-label {
+      font-family: var(--font-display); font-size: 0.52rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim);
+      padding: 14px 20px 8px;
+    }
+    #sidenav ul { list-style: none; padding: 0 10px; display: flex; flex-direction: column; gap: 2px; flex: 1; }
+    #sidenav ul li a {
+      display: flex; align-items: center; gap: 12px; padding: 11px 14px;
+      border-radius: 9px; font-family: var(--font-display); font-size: 0.67rem;
+      font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+      color: var(--text-dim); text-decoration: none; transition: var(--transition); position: relative;
+    }
+    #sidenav ul li a i { font-size: 0.85rem; width: 18px; text-align: center; flex-shrink: 0; }
+    #sidenav ul li a:hover, #sidenav ul li a.active { color: var(--cyan); background: var(--cyan-dim); }
+    #sidenav ul li a.active::before {
+      content: ''; position: absolute; left: 0; top: 20%; bottom: 20%;
+      width: 2px; background: var(--cyan); border-radius: 2px; box-shadow: 0 0 8px var(--cyan);
+    }
+    .sidenav-bottom { padding: 16px 14px; border-top: 1px solid var(--border-glass); }
+    .sidenav-version { font-family: 'DM Mono', monospace; font-size: 0.55rem; color: var(--text-dim); letter-spacing: 0.04em; margin-bottom: 10px; }
+    body.has-sidenav { padding-left: 220px; }
+    /* Slim top header */
+    #header {
+      position: fixed; top: 0; left: 220px; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 64px;
+      background: rgba(4,2,14,0.85);
+      border-bottom: 1px solid var(--border-glass);
+      backdrop-filter: blur(24px) saturate(1.5);
+    }
+    .logo-wrap { display: none; }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .nav-cart-btn {
+      position: relative; width: 40px; height: 40px; background: var(--cyan-dim);
+      border: 1px solid var(--border-cyan); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--cyan); font-size: 0.95rem; cursor: pointer;
+      transition: var(--transition);
+    }
+    .nav-cart-btn:hover { border-color: var(--cyan); box-shadow: 0 0 18px rgba(0,212,255,0.25); }
+    .cart-badge {
+      position: absolute; top: -6px; right: -6px; min-width: 18px; height: 18px;
+      background: var(--purple-bright); border-radius: 9px; font-size: 0.6rem;
+      font-weight: 700; display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-ui); padding: 0 4px; box-shadow: 0 0 10px rgba(192,38,211,0.6);
+    }
+    .hamburger { display: none; flex-direction: column; gap: 5px; width: 28px; cursor: pointer; }
+    .hamburger span { display: block; height: 2px; border-radius: 2px; transition: var(--transition); }
+    .hamburger span:nth-child(1) { background: var(--purple); }
+    .hamburger span:nth-child(2) { background: var(--cyan); width: 70%; }
+    .hamburger span:nth-child(3) { background: var(--purple); }
+    @media (min-width: 769px) { #header .hamburger { display: none; } }
+    @media (max-width: 768px) {
+      body.has-sidenav { padding-left: 0; }
+      #header { left: 0; }
+      .logo-wrap { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+      .logo-icon {
+        width: 32px; height: 32px;
+        background: linear-gradient(135deg, var(--purple), var(--purple-bright));
+        border-radius: 9px; display: flex; align-items: center; justify-content: center;
+        font-family: var(--font-display); font-weight: 900; font-size: 0.85rem; color: #fff;
+      }
+      .logo-text { font-family: var(--font-display); font-size: 0.9rem; font-weight: 800; color: var(--text-white); }
+      .logo-text .accent { color: var(--purple); }
+      .hamburger { display: flex; }
+      #sidenav { transform: translateX(-100%); }
+      #sidenav.open { transform: translateX(0); }
+      .sidenav-overlay {
+        position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1000;
+        opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+      }
+      .sidenav-overlay.active { opacity: 1; pointer-events: all; }
+    }
+    /* page content below header */
+    .page-content-wrap { padding-top: 64px; }
+
+  </style>
+</head>
+<body class="has-sidenav">
+  <div class="sidenav-overlay" id="sidenavOverlay" onclick="closeSidenav()"></div>
+  <aside id="sidenav">
+    <a href="index.html" class="sidenav-logo">
+      <div class="sidenav-logo-icon">N</div>
+      <span class="sidenav-logo-text">NEME<span class="accent">XIS</span></span>
+    </a>
+    <a href="index.html" class="sidenav-login-btn">
+      <i class="fas fa-user-circle"></i>
+      <span>Login / Register</span>
+    </a>
+    <div class="sidenav-section-label">Navigation</div>
+    <ul>
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+      <li><a href="index.html#products"><i class="fas fa-gamepad"></i> Products</a></li>
+      <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+      <li><a href="Orders.html"><i class="fas fa-receipt"></i> My Orders</a></li>
+    </ul>
+    <div class="sidenav-bottom">
+      <div class="sidenav-version">⚡ NEMEXIS v3.0 · Gaming Store</div>
+    </div>
+  </aside>
+  <header id="header">
+    <a href="index.html" class="logo-wrap">
+      <div class="logo-icon">N</div>
+      <span class="logo-text">NEME<span class="accent">XIS</span></span>
+    </a>
+    <div class="nav-actions">
+      <div class="hamburger" onclick="toggleSidenav()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </header>
+
+
+<div class="bg-ambient"><div class="bg-orb orb-mid"></div></div>
+<div class="bg-grid"></div>
+<div class="bg-scan"></div>
+
+<!-- ── HEADER ──────────────────────────────────────────── -->
+
+
+
+<!-- ── PAGE HERO ────────────────────────────────────────── -->
+<section class="page-hero" style="padding-top:64px">
+  <div class="page-hero-eyebrow"><i class="fas fa-file-contract"></i> Legal</div>
+  <h1>Terms &amp; <span class="gradient-text">Conditions</span></h1>
+  <p>Please read these terms carefully before using NEMEXIS services. By accessing our platform or placing an order, you agree to be bound by these terms.</p>
+  <div class="page-hero-meta">
+    <span class="page-hero-meta-item"><i class="fas fa-calendar"></i> Effective: 1 January 2025</span>
+    <span class="page-hero-meta-item"><i class="fas fa-sync"></i> Last Updated: 1 June 2025</span>
+  </div>
+</section>
+
+<!-- ── CONTENT ───────────────────────────────────────────── -->
+<main class="page-content">
+
+  <div class="policy-section">
+    <div class="policy-section-icon"><i class="fas fa-handshake"></i></div>
+    <h2>Acceptance of Terms</h2>
+    <p>These Terms and Conditions ("Terms") constitute a legally binding agreement between you ("User", "you") and NEMEXIS OFFICIAL ("Company", "we", "us") governing your use of our website and digital top-up services.</p>
+    <p>By visiting our website, creating an account, or placing an order, you confirm that you have read, understood, and agreed to these Terms in full. If you are under 18 years of age, you must obtain explicit parental or guardian consent before using our services.</p>
+    <div class="policy-callout warn">
+      <div class="policy-callout-icon"><i class="fas fa-exclamation-triangle"></i></div>
+      <p><strong>If you do not agree to these Terms, you must immediately stop using the NEMEXIS platform.</strong> Continued use of our services constitutes ongoing acceptance of any updates to these Terms.</p>
+    </div>
+  </div>
+
+  <div class="policy-section">
+    <div class="policy-section-icon"><i class="fas fa-concierge-bell"></i></div>
+    <h2>Our Services</h2>
+    <p>NEMEXIS provides a digital top-up service that enables users to purchase in-game currency and digital packs for supported video games. Our services include:</p>
+    <ul>
+      <li>Purchase of in-game diamonds, UC, gems, tokens, and other game currencies</li>
+      <li>Delivery of digital goods directly to your in-game account via Player ID</li>
+      <li>Order tracking and transaction history via your account dashboard</li>
+      <li>Customer support via WhatsApp and email</li>
+    </ul>
+    <p>We reserve the right to modify, suspend, or discontinue any part of our services at any time without prior notice. We are not liable for any consequences arising from such changes.</p>
+    <div class="policy-callout info">
+      <div class="policy-callout-icon"><i class="fas fa-info-circle"></i></div>
+      <p>NEMEXIS is an independent digital top-up service. We are <strong>not officially affiliated</strong> with Moonton, KRAFTON, miHoYo, Supercell, TiMi Studio, or any other game publisher unless explicitly stated.</p>
+    </div>
+  </div>
+
+  <div class="policy-section">
+    <div class="policy-section-icon"><i class="fas fa-user-shield"></i></div>
+    <h2>User Responsibilities</h2>
+    <p>As a user of NEMEXIS, you agree to the following responsibilities and obligations:</p>
+    <h3>Account Security</h3>
+    <ul>
+      <li>You are solely responsible for maintaining the confidentiality of your account login credentials.</li>
+      <li>You must not share your account with others or allow third parties to access your account.</li>
+      <li>You must immediately notify us of any unauthorised use of your account.</li>
+      <li>We are not liable for any loss or damage arising from your failure to protect your account credentials.</li>
+    </ul>
+    <h3>Accurate Information</h3>
+    <ul>
+      <li>You must provide accurate and complete information during registration and order placement, particularly your Player ID and Server ID.</li>
+      <li>NEMEXIS bears no responsibility for failed or incorrectly delivered recharges resulting from a wrong or invalid Player ID provided by the user.</li>
+      <li>You are responsible for verifying your Player ID before completing payment. Recharges to incorrect IDs are non-refundable.</li>
+    </ul>
+    <h3>Prohibited Activities</h3>
+    <ul>
+      <li>Attempting to access accounts belonging to other users</li>
+      <li>Using bots, scripts, or automated tools to place orders</li>
+      <li>Engaging in chargebacks or payment disputes after a successful recharge delivery</li>
+      <li>Reselling purchased digital goods without our written consent</li>
+      <li>Using our platform for any fraudulent, illegal, or harmful activity</li>
+      <li>Attempting to reverse-engineer, hack, or disrupt our website or backend systems</li>
+    </ul>
+    <div class="policy-callout danger">
+      <div class="policy-callout-icon"><i class="fas fa-ban"></i></div>
+      <p>Violation of any prohibited activity may result in <strong>immediate account termination, permanent ban, and legal action</strong> under applicable Indian laws, including the Information Technology Act, 2000.</p>
+    </div>
+  </div>
+
+  <div class="policy-section">
+    <div class="policy-section-icon"><i class="fas fa-credit-card"></i></div>
+    <h2>Payment Terms</h2>
+    <p>All payments on NEMEXIS are processed through <strong style="color:var(--cyan)">Razorpay</strong>, a PCI-DSS Level 1 compliant payment gateway regulated by the Reserve Bank of India (RBI).</p>
+    <h3>Accepted Payment Methods</h3>
+    <div style="margin:14px 0;">
+      <span class="policy-badge purple"><i class="fas fa-mobile-alt"></i> UPI</span>
+      <span class="policy-badge purple">GPay</span>
+      <span class="policy-badge purple">PhonePe</span>
+      <span class="policy-badge cyan"><i class="fas fa-credit-card"></i> Debit / Credit Cards</span>
+      <span class="policy-badge cyan">Net Banking</span>
+      <span class="policy-badge green">BHIM UPI</span>
+    </div>
+    <ul>
+      <li>All prices displayed on our website are in Indian Rupees (INR) and include applicable taxes unless stated otherwise.</li>
+      <li>Payment must be completed in full before any recharge order is processed.</li>
+      <li>We do not offer credit, EMI, or deferred payment options unless explicitly announced.</li>
+      <li>Currency conversion fees (for international cards) are borne by the user and are beyond our control.</li>
+      <li>NEMEXIS does not store your card numbers, UPI handles, or bank credentials. These are handled exclusively by Razorpay.</li>
+    </ul>
+    <h3>Transaction Failures</h3>
+    <p>If your payment is deducted but the order is not fulfilled due to a payment gateway error, your amount will be refunded within 5–7 business days to the original payment method. Contact us at nemexisz999@gmail.com with your transaction ID if this occurs.</p>
+  </div>
+
+  <div class="policy-section">
+    <div class="policy-section-icon"><i class="fas fa-bolt"></i></div>
+    <h2>Order Delivery</h2>
+    <p>NEMEXIS processes digital top-ups automatically upon successful payment confirmation. Under normal circumstances:</p>
+    <ul class="check-list">
+      <li><i class="fas fa-check-circle"></i> Most orders are delivered within <strong style="color:var(--cyan)">2–10 minutes</strong> of successful payment</li>
+      <li><i class="fas fa-check-circle"></i> During peak hours or high order volume, delivery may take up to <strong style="color:var(--cyan)">30 minutes</strong></li>
+      <li><i class="fas fa-check-circle"></i> In rare cases involving API delays, delivery may take up to <strong style="color:var(--cyan)">2 hours</strong></li>
+      <li><i class="fas fa-check-circle"></i> A confirmation email or WhatsApp message will be sent upon successful delivery</li>
+    </ul>
+    <p>If your order is not delivered within 2 hours, contact our support team with your Order ID. Do not make duplicate purchases.</p>
+  </div>
+
+  <div class="policy-section">
+    <div class="policy-section-icon"><i class="fas fa-balance-scale"></i></div>
+    <h2>Limitation of Liability</h2>
+    <p>To the fullest extent permitted by applicable law, NEMEXIS shall not be liable for:</p>
+    <ul>
+      <li>Any indirect, incidental, special, or consequential damages arising from the use of our services</li>
+      <li>Loss of in-game progress, account bans, or penalties imposed by game publishers resulting from top-up activities</li>
+      <li>Delays or failures caused by third-party payment gateways, internet service providers, or game server outages</li>
+      <li>Losses resulting from your failure to provide accurate Player ID or order information</li>
+      <li>Unauthorised access to your account resulting from your negligence</li>
+    </ul>
+    <p>Our total liability to you for any claim arising from these Terms shall not exceed the amount you paid for the specific order in dispute.</p>
+  </div>
+
+  <div class="policy-section">
+    <div class="policy-section-icon"><i class="fas fa-gavel"></i></div>
+    <h2>Governing Law &amp; Dispute Resolution</h2>
+    <p>These Terms are governed by the laws of India. Any disputes arising from or in connection with these Terms shall be subject to the exclusive jurisdiction of the courts located in India.</p>
+    <p>Before initiating any legal proceedings, we strongly encourage you to first contact our support team to resolve the matter amicably. We commit to responding to all formal complaints within 72 hours.</p>
+    <div class="policy-callout info">
+      <div class="policy-callout-icon"><i class="fas fa-envelope"></i></div>
+      <p>For formal complaints or legal notices, contact us at: <strong>nemexisz999@gmail.com</strong> | WhatsApp: <strong>+91 70999 74271</strong></p>
+    </div>
+  </div>
+
+  <div class="policy-section">
+    <div class="policy-section-icon"><i class="fas fa-sync-alt"></i></div>
+    <h2>Modifications to Terms</h2>
+    <p>We reserve the right to update these Terms at any time. Material changes will be communicated via email or a prominent notice on our website. The updated Terms take effect on the date of publication. Your continued use of NEMEXIS after the effective date constitutes your acceptance of the revised Terms.</p>
+  </div>
+
+</main>
+
+<!-- ── FOOTER ──────────────────────────────────────────────── -->
+
+
+<a href="https://wa.me/917099974271" target="_blank" class="wa-float" aria-label="Chat on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('header').classList.toggle('scrolled', window.scrollY > 20);
+  });
+  function toggleMobileNav() {
+    document.getElementById('mobileNav').classList.toggle('open');
+  }
+</script>
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h2>NEME<span class="accent">XIS</span> OFFICIAL</h2>
+        <p>India's trusted gaming top-up platform. We power up your game with instant MLBB diamonds, BGMI UC, Genshin crystals, and more — at the best prices.</p>
+        <div class="footer-contact">
+          <p><i class="fas fa-phone" style="color:var(--purple);margin-right:8px"></i>+91 70999 74271</p>
+          <p><i class="fas fa-envelope" style="color:var(--purple);margin-right:8px"></i>nemexisz999@gmail.com</p>
+        </div>
+        <div class="social-row">
+          <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/917099974271" target="_blank" class="social-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" class="social-btn" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+          <a href="#" class="social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#products">Games</a></li>
+          <li><a href="Orders.html">My Orders</a></li>
+          <li><a href="contact.html">Customer Support</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms &amp; Conditions</a></li>
+          <li><a href="refund.html">Refund Policy</a></li>
+          <li><a href="cookies.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Payments</h4>
+        <div class="footer-pay-chips">
+          <span class="footer-pay-chip">GPay</span>
+          <span class="footer-pay-chip">PhonePe</span>
+          <span class="footer-pay-chip">BHIM UPI</span>
+          <span class="footer-pay-chip">Razorpay</span>
+          <span class="footer-pay-chip">Cards</span>
+          <span class="footer-pay-chip">Net Banking</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Nemexis Official. All rights reserved. Made with ❤️ for gamers in India.</p>
+      <div class="footer-bottom-links">
+        <a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refund</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleSidenav() {
+      document.getElementById('sidenav').classList.toggle('open');
+      document.getElementById('sidenavOverlay').classList.toggle('active');
+    }
+    function closeSidenav() {
+      document.getElementById('sidenav').classList.remove('open');
+      document.getElementById('sidenavOverlay').classList.remove('active');
+    }
+    window.addEventListener('scroll', () => {
+      document.getElementById('header').classList.toggle('scrolled', window.scrollY > 60);
+    });
+  </script>
+
+</body>
+</html>

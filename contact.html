@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact &amp; Support — NEMEXIS OFFICIAL</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    /* ============================================================
+       NEMEXIS DESIGN SYSTEM — CSS VARIABLES
+    ============================================================ */
+    :root {
+      --bg-void:        #04020e;
+      --bg-deep:        #07040f;
+      --bg-card:        #0c0820;
+      --bg-glass:       rgba(12, 8, 32, 0.75);
+      --bg-glass-light: rgba(255,255,255,0.035);
+      --cyan:           #00d4ff;
+      --cyan-dim:       rgba(0,212,255,0.12);
+      --cyan-glow:      rgba(0,212,255,0.5);
+      --purple:         #a855f7;
+      --purple-bright:  #c026d3;
+      --purple-dim:     rgba(168,85,247,0.15);
+      --purple-glow:    rgba(168,85,247,0.45);
+      --blue:           #1e6fff;
+      --pink:           #f72585;
+      --gold:           #ffd60a;
+      --green:          #22c55e;
+      --text-white:     #f0eaff;
+      --text-sub:       #b0a8cc;
+      --text-dim:       #6b5f88;
+      --border-glass:   rgba(168,85,247,0.12);
+      --border-cyan:    rgba(0,212,255,0.2);
+      --border-bright:  rgba(0,212,255,0.45);
+      --border-purple:  rgba(168,85,247,0.4);
+      --font-display:   'Syne', sans-serif;
+      --font-body:      'Outfit', sans-serif;
+      --font-ui:        'Outfit', sans-serif;
+      --ease:           cubic-bezier(0.4,0,0.2,1);
+      --spring:         cubic-bezier(0.34,1.56,0.64,1);
+      --transition:     0.32s cubic-bezier(0.4,0,0.2,1);
+      --radius:         16px;
+      --shadow-card:    0 20px 60px rgba(0,0,0,0.4), 0 4px 20px rgba(0,0,0,0.3);
+      --shadow-purple:  0 0 30px rgba(168,85,247,0.35), 0 0 80px rgba(168,85,247,0.1);
+    }
+
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; font-size:16px; }
+    body {
+      background: var(--bg-void);
+      color: var(--text-white);
+      font-family: var(--font-body);
+      min-height: 100vh;
+    }
+    a { text-decoration:none; color:inherit; }
+    button { cursor:pointer; border:none; background:none; font-family:inherit; color:inherit; }
+
+    ::-webkit-scrollbar { width:5px; }
+    ::-webkit-scrollbar-track { background:var(--bg-void); }
+    ::-webkit-scrollbar-thumb { background: rgba(168,85,247,0.35); border-radius:3px; }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--purple) 0%, var(--cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── Section ── */
+    .section-pad { padding: 96px 6%; }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--purple);
+      background: rgba(168,85,247,0.1);
+      border: 1px solid rgba(168,85,247,0.25);
+      padding: 5px 14px;
+      border-radius: 30px;
+      margin-bottom: 14px;
+    }
+    .section-label::before {
+      content: '';
+      width: 5px; height: 5px;
+      background: var(--purple);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--purple);
+      animation: blink 1.8s infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .section-heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.7rem);
+      font-weight: 800;
+      line-height: 1.12;
+      letter-spacing: -0.01em;
+      margin-bottom: 14px;
+    }
+    .section-sub {
+      font-size: 1rem;
+      color: var(--text-sub);
+      max-width: 580px;
+      line-height: 1.75;
+      font-family: var(--font-ui);
+    }
+
+    /* ── Buttons ── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 14px 34px;
+      background: linear-gradient(135deg, var(--purple) 0%, var(--purple-bright) 100%);
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      border-radius: 8px;
+      border: none;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+      box-shadow: 0 0 25px rgba(168,85,247,0.4), 0 4px 15px rgba(0,0,0,0.3);
+      cursor: pointer;
+    }
+    .btn-primary::before {
+      content:'';
+      position:absolute;
+      inset:0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%);
+      opacity:0;
+      transition: var(--transition);
+    }
+    .btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 0 45px rgba(168,85,247,0.6), 0 10px 30px rgba(0,0,0,0.35); }
+    .btn-primary:hover::before { opacity:1; }
+    .btn-primary:active { transform:scale(0.97); }
+    .btn-primary:disabled { opacity:0.5; cursor:not-allowed; transform:none; }
+
+    /* ── Header ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 6%;
+      height: 68px;
+      background: var(--bg-glass);
+      backdrop-filter: blur(22px) saturate(1.4);
+      -webkit-backdrop-filter: blur(22px) saturate(1.4);
+      border-bottom: 1px solid var(--border-glass);
+      transition: border-bottom-color 0.3s ease;
+    }
+    header.scrolled { border-bottom-color: rgba(168,85,247,0.2); }
+
+    .logo-wrap { display:flex; align-items:center; gap:10px; text-decoration:none; }
+    .logo-icon {
+      width:36px; height:36px;
+      background: linear-gradient(135deg, var(--purple), var(--purple-bright));
+      border-radius:10px;
+      display:flex; align-items:center; justify-content:center;
+      font-family: var(--font-display);
+      font-weight: 900; font-size:1rem; color:#fff;
+      box-shadow: 0 0 18px rgba(168,85,247,0.4);
+    }
+    .logo-text { font-family: var(--font-display); font-size:1.05rem; font-weight:800; letter-spacing:0.04em; color:var(--text-white); }
+    .logo-text .accent { color: var(--cyan); }
+
+    nav ul { display:flex; align-items:center; gap:6px; list-style:none; }
+    nav ul li a {
+      font-family: var(--font-display);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      padding: 7px 13px;
+      border-radius: 7px;
+      transition: var(--transition);
+    }
+    nav ul li a:hover { color: var(--text-white); background: rgba(255,255,255,0.05); }
+    nav ul li a.current-page { color: var(--purple); background: rgba(168,85,247,0.08); }
+
+    .nav-actions { display:flex; align-items:center; gap:10px; }
+    .nav-login-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 18px;
+      background: rgba(168,85,247,0.08);
+      border: 1px solid var(--border-glass);
+      border-radius: 7px;
+      color: var(--text-sub);
+      font-family: var(--font-display);
+      font-size: 0.64rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .nav-login-btn:hover { color: var(--text-white); border-color: var(--purple); }
+
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:6px; }
+    .hamburger span { display:block; width:22px; height:2px; background:var(--text-sub); border-radius:2px; transition:var(--transition); }
+
+    @media (max-width: 860px) {
+      nav ul {
+        display: none;
+        position: fixed;
+        top: 68px; left:0; right:0;
+        background: var(--bg-card);
+        border-bottom: 1px solid var(--border-glass);
+        flex-direction: column;
+        padding: 16px 6%;
+        gap: 4px;
+        z-index: 998;
+      }
+      nav ul.open { display: flex; }
+      nav ul li a { display:block; padding: 11px 14px; }
+      .hamburger { display:flex; }
+    }
+
+    /* ── Form components ── */
+    .form-group { margin-bottom: 20px; }
+    .form-label {
+      display: block;
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+    }
+    .form-input {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border-glass);
+      border-radius: 9px;
+      padding: 12px 16px;
+      color: var(--text-white);
+      font-family: var(--font-ui);
+      font-size: 0.9rem;
+      transition: var(--transition);
+      outline: none;
+    }
+    .form-input:focus { border-color: rgba(168,85,247,0.5); box-shadow: 0 0 18px rgba(168,85,247,0.12); }
+    .form-input::placeholder { color: var(--text-dim); }
+    .form-input:hover:not(:focus) { border-color: rgba(168,85,247,0.25); }
+
+    .form-select {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border-glass);
+      border-radius: 9px;
+      padding: 12px 40px 12px 16px;
+      color: var(--text-white);
+      font-family: var(--font-ui);
+      font-size: 0.9rem;
+      transition: var(--transition);
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b5f88' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      cursor: pointer;
+    }
+    .form-select:focus { border-color: rgba(168,85,247,0.5); box-shadow: 0 0 18px rgba(168,85,247,0.12); }
+    .form-select option { background: #0c0820; color: var(--text-white); }
+
+    .form-textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border-glass);
+      border-radius: 9px;
+      padding: 13px 16px;
+      color: var(--text-white);
+      font-family: var(--font-ui);
+      font-size: 0.9rem;
+      resize: vertical;
+      min-height: 120px;
+      transition: var(--transition);
+      outline: none;
+    }
+    .form-textarea:focus { border-color: rgba(168,85,247,0.5); box-shadow: 0 0 18px rgba(168,85,247,0.12); }
+    .form-textarea::placeholder { color: var(--text-dim); }
+
+    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 560px) { .form-row-2 { grid-template-columns: 1fr; } }
+
+    /* ── File Upload ── */
+    .file-upload-wrap { display:flex; align-items:center; gap:14px; }
+    .file-upload-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 20px;
+      background: var(--purple-dim);
+      border: 1px solid var(--border-purple);
+      border-radius: 8px;
+      color: var(--purple);
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .file-upload-btn:hover { background: rgba(168,85,247,0.22); box-shadow: 0 0 14px rgba(168,85,247,0.25); }
+    .file-name-display { font-family:var(--font-ui); font-size:0.82rem; color:var(--text-dim); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+
+    /* ── Checkbox ── */
+    .form-check { display:flex; align-items:flex-start; gap:12px; cursor:pointer; margin-bottom:22px; }
+    .form-check input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 18px; height: 18px; min-width: 18px;
+      border-radius: 5px;
+      border: 1px solid var(--border-purple);
+      background: rgba(168,85,247,0.07);
+      cursor: pointer;
+      margin-top: 2px;
+      transition: var(--transition);
+      position: relative;
+    }
+    .form-check input[type="checkbox"]:checked { background: var(--purple); border-color: var(--purple); }
+    .form-check input[type="checkbox"]:checked::after {
+      content: '';
+      position: absolute;
+      left: 5px; top: 2px;
+      width: 5px; height: 9px;
+      border: 2px solid #fff;
+      border-top: none; border-left: none;
+      transform: rotate(45deg);
+    }
+    .form-check-label { font-family:var(--font-ui); font-size:0.78rem; color:var(--text-sub); line-height:1.65; }
+
+    /* ── Contact Tab Switcher ── */
+    .contact-tabs {
+      display: inline-flex;
+      gap: 6px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--border-glass);
+      padding: 5px;
+      border-radius: 30px;
+      margin-bottom: 34px;
+    }
+    .contact-tab {
+      padding: 10px 24px;
+      border-radius: 30px;
+      border: none;
+      background: transparent;
+      color: var(--text-sub);
+      font-family: var(--font-display);
+      font-size: 0.64rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .contact-tab.active {
+      background: linear-gradient(135deg, var(--purple) 0%, var(--purple-bright) 100%);
+      color: #fff;
+      box-shadow: 0 0 16px rgba(168,85,247,0.4);
+    }
+    .contact-tab:not(.active):hover { color: var(--text-white); }
+
+    /* ── Contact Panels ── */
+    .contact-panel { display:none; }
+    .contact-panel.active { display:block; }
+
+    /* ── Contact Box ── */
+    .contact-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 22px;
+      padding: 38px 42px;
+      box-shadow: var(--shadow-card);
+      max-width: 740px;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact-box::before {
+      content:'';
+      position:absolute;
+      top:0; left:10%; right:10%;
+      height:1px;
+      background: linear-gradient(90deg, transparent, rgba(168,85,247,0.3), transparent);
+    }
+
+    .contact-sub-title {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-white);
+      margin-bottom: 8px;
+    }
+    .contact-sub-text {
+      font-family: var(--font-ui);
+      font-size: 0.85rem;
+      color: var(--text-sub);
+      margin-bottom: 28px;
+      line-height: 1.7;
+    }
+
+    /* ── Info Cards row ── */
+    .contact-info-row {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 14px;
+      margin-bottom: 48px;
+    }
+    @media (max-width: 700px) { .contact-info-row { grid-template-columns: 1fr; } }
+
+    .contact-info-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      border-radius: 16px;
+      padding: 22px 20px;
+      text-align: center;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .contact-info-card:hover { border-color: var(--border-purple); box-shadow: 0 0 18px rgba(168,85,247,0.08); }
+    .contact-info-card .ci-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px;
+      display: flex; align-items:center; justify-content:center;
+      margin: 0 auto 12px;
+      font-size: 1.1rem;
+    }
+    .ci-purple { background: rgba(168,85,247,0.12); color: var(--purple); border: 1px solid rgba(168,85,247,0.2); }
+    .ci-green  { background: rgba(34,197,94,0.10);  color: var(--green);  border: 1px solid rgba(34,197,94,0.2); }
+    .ci-cyan   { background: rgba(0,212,255,0.10);  color: var(--cyan);   border: 1px solid rgba(0,212,255,0.2); }
+    .contact-info-card .ci-label {
+      font-family: var(--font-display);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+    }
+    .contact-info-card .ci-value {
+      font-family: var(--font-ui);
+      font-size: 0.85rem;
+      color: var(--text-white);
+      line-height: 1.5;
+    }
+
+    /* ── Toast ── */
+    .toast-container { position:fixed; bottom:28px; right:24px; z-index:9999; display:flex; flex-direction:column; gap:10px; }
+    .toast {
+      display:flex; align-items:center; gap:10px;
+      padding:13px 18px;
+      border-radius:12px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-glass);
+      font-family: var(--font-ui); font-size:0.85rem; color:var(--text-white);
+      box-shadow: var(--shadow-card);
+      animation: toastIn 0.35s var(--spring);
+      max-width: 320px;
+    }
+    .toast.success { border-color: rgba(34,197,94,0.35); }
+    .toast.success i { color: var(--green); }
+    .toast.error { border-color: rgba(247,37,133,0.35); }
+    .toast.error i { color: var(--pink); }
+    @keyframes toastIn { from{opacity:0;transform:translateX(40px)} to{opacity:1;transform:none} }
+
+    /* ── Footer ── */
+    footer { background: var(--bg-deep); border-top: 1px solid var(--border-glass); padding: 60px 6% 30px; }
+    .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px; margin-bottom:40px; }
+    @media (max-width:900px) { .footer-grid { grid-template-columns:1fr 1fr; } }
+    @media (max-width:540px) { .footer-grid { grid-template-columns:1fr; } }
+    .footer-brand h2 { font-family:var(--font-display); font-size:1.1rem; font-weight:800; color:var(--text-white); margin-bottom:12px; }
+    .footer-brand p, .footer-contact p { font-family:var(--font-ui); font-size:0.82rem; color:var(--text-sub); line-height:1.75; }
+    .footer-contact { margin:16px 0; display:flex; flex-direction:column; gap:6px; }
+    .footer-col h4 { font-family:var(--font-display); font-size:0.65rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-dim); margin-bottom:14px; }
+    .footer-col ul { list-style:none; display:flex; flex-direction:column; gap:8px; }
+    .footer-col ul li a { font-family:var(--font-ui); font-size:0.82rem; color:var(--text-sub); transition:color 0.25s; }
+    .footer-col ul li a:hover { color: var(--purple); }
+    .footer-pay-chips { display:flex; flex-wrap:wrap; gap:7px; }
+    .footer-pay-chip { padding:5px 12px; border-radius:6px; background:rgba(255,255,255,0.04); border:1px solid var(--border-glass); font-family:var(--font-ui); font-size:0.72rem; color:var(--text-sub); }
+    .footer-bottom { border-top:1px solid var(--border-glass); padding-top:22px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap; }
+    .footer-bottom p { font-family:var(--font-ui); font-size:0.78rem; color:var(--text-dim); }
+    .footer-bottom-links { display:flex; gap:18px; }
+    .footer-bottom-links a { font-family:var(--font-ui); font-size:0.78rem; color:var(--text-dim); transition:color 0.25s; }
+    .footer-bottom-links a:hover { color:var(--purple); }
+    .social-row { display:flex; gap:10px; margin-top:16px; }
+    .social-btn { width:36px; height:36px; border-radius:9px; background:rgba(255,255,255,0.04); border:1px solid var(--border-glass); display:flex; align-items:center; justify-content:center; font-size:0.9rem; color:var(--text-sub); transition:var(--transition); }
+    .social-btn:hover { color:var(--purple); border-color:var(--border-purple); }
+
+    .wa-float { position:fixed; bottom:28px; left:24px; width:52px; height:52px; border-radius:50%; background:#25d366; display:flex; align-items:center; justify-content:center; font-size:1.5rem; color:#fff; box-shadow:0 4px 20px rgba(37,211,102,0.45); z-index:999; transition:transform 0.3s var(--spring); }
+    .wa-float:hover { transform:scale(1.12); }
+
+    @media (max-width:640px) {
+      .section-pad { padding: 72px 5%; }
+      .contact-box { padding: 24px 20px; }
+    }
+  </style>
+  <style>
+
+    /* ============================================================
+       NEMEXIS SIDEBAR NAV — SHARED
+    ============================================================ */
+    :root {
+      --bg-void: #04020e; --bg-deep: #07040f; --bg-card: #0c0820;
+      --bg-glass: rgba(12,8,32,0.75); --bg-glass-light: rgba(255,255,255,0.035);
+      --cyan: #00d4ff; --cyan-dim: rgba(0,212,255,0.12); --cyan-glow: rgba(0,212,255,0.5);
+      --purple: #a855f7; --purple-bright: #c026d3; --purple-dim: rgba(168,85,247,0.15);
+      --purple-glow: rgba(168,85,247,0.45); --blue: #1e6fff; --pink: #f72585;
+      --gold: #ffd60a; --green: #22c55e; --text-white: #f0eaff;
+      --text-sub: #b0a8cc; --text-dim: #6b5f88;
+      --border-glass: rgba(168,85,247,0.12); --border-cyan: rgba(0,212,255,0.2);
+      --border-bright: rgba(0,212,255,0.45); --border-purple: rgba(168,85,247,0.4);
+      --font-display: 'Syne', sans-serif; --font-body: 'Outfit', sans-serif;
+      --font-ui: 'Outfit', sans-serif;
+      --ease: cubic-bezier(0.4,0,0.2,1); --spring: cubic-bezier(0.34,1.56,0.64,1);
+      --transition: 0.32s cubic-bezier(0.4,0,0.2,1);
+    }
+    #sidenav {
+      position: fixed; top: 0; left: 0; bottom: 0; width: 220px; z-index: 1001;
+      background: rgba(4,2,14,0.97); border-right: 1px solid var(--border-glass);
+      backdrop-filter: blur(28px) saturate(1.5); -webkit-backdrop-filter: blur(28px) saturate(1.5);
+      display: flex; flex-direction: column; gap: 0;
+      transition: transform 0.35s var(--ease); box-shadow: 4px 0 40px rgba(0,0,0,0.45);
+    }
+    .sidenav-logo {
+      display: flex; align-items: center; gap: 10px; padding: 24px 20px 20px;
+      border-bottom: 1px solid var(--border-glass); text-decoration: none;
+    }
+    .sidenav-logo-icon {
+      width: 34px; height: 34px;
+      background: linear-gradient(135deg, var(--purple), var(--purple-bright));
+      border-radius: 9px; display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-weight: 900; font-size: 0.9rem; color: #fff;
+      box-shadow: 0 0 16px rgba(168,85,247,0.5); flex-shrink: 0;
+    }
+    .sidenav-logo-text {
+      font-family: var(--font-display); font-size: 0.9rem; font-weight: 800;
+      letter-spacing: 0.05em; color: var(--text-white);
+    }
+    .sidenav-logo-text .accent { color: var(--purple); }
+    .sidenav-login-btn {
+      display: flex; align-items: center; gap: 10px; padding: 12px 20px;
+      margin: 16px 14px 8px;
+      background: linear-gradient(135deg, rgba(168,85,247,0.15) 0%, rgba(192,38,211,0.1) 100%);
+      color: var(--purple); font-family: var(--font-display); font-size: 0.64rem;
+      font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      border-radius: 10px; border: 1px solid rgba(168,85,247,0.3); cursor: pointer;
+      transition: var(--transition); width: calc(100% - 28px); text-decoration: none;
+    }
+    .sidenav-login-btn:hover {
+      background: rgba(168,85,247,0.22); border-color: var(--purple);
+      box-shadow: 0 0 22px rgba(168,85,247,0.25);
+    }
+    .sidenav-section-label {
+      font-family: var(--font-display); font-size: 0.52rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-dim);
+      padding: 14px 20px 8px;
+    }
+    #sidenav ul { list-style: none; padding: 0 10px; display: flex; flex-direction: column; gap: 2px; flex: 1; }
+    #sidenav ul li a {
+      display: flex; align-items: center; gap: 12px; padding: 11px 14px;
+      border-radius: 9px; font-family: var(--font-display); font-size: 0.67rem;
+      font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+      color: var(--text-dim); text-decoration: none; transition: var(--transition); position: relative;
+    }
+    #sidenav ul li a i { font-size: 0.85rem; width: 18px; text-align: center; flex-shrink: 0; }
+    #sidenav ul li a:hover, #sidenav ul li a.active { color: var(--cyan); background: var(--cyan-dim); }
+    #sidenav ul li a.active::before {
+      content: ''; position: absolute; left: 0; top: 20%; bottom: 20%;
+      width: 2px; background: var(--cyan); border-radius: 2px; box-shadow: 0 0 8px var(--cyan);
+    }
+    .sidenav-bottom { padding: 16px 14px; border-top: 1px solid var(--border-glass); }
+    .sidenav-version { font-family: 'DM Mono', monospace; font-size: 0.55rem; color: var(--text-dim); letter-spacing: 0.04em; margin-bottom: 10px; }
+    body.has-sidenav { padding-left: 220px; }
+    /* Slim top header */
+    #header {
+      position: fixed; top: 0; left: 220px; right: 0; z-index: 1000;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 64px;
+      background: rgba(4,2,14,0.85);
+      border-bottom: 1px solid var(--border-glass);
+      backdrop-filter: blur(24px) saturate(1.5);
+    }
+    .logo-wrap { display: none; }
+    .nav-actions { display: flex; align-items: center; gap: 10px; }
+    .nav-cart-btn {
+      position: relative; width: 40px; height: 40px; background: var(--cyan-dim);
+      border: 1px solid var(--border-cyan); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--cyan); font-size: 0.95rem; cursor: pointer;
+      transition: var(--transition);
+    }
+    .nav-cart-btn:hover { border-color: var(--cyan); box-shadow: 0 0 18px rgba(0,212,255,0.25); }
+    .cart-badge {
+      position: absolute; top: -6px; right: -6px; min-width: 18px; height: 18px;
+      background: var(--purple-bright); border-radius: 9px; font-size: 0.6rem;
+      font-weight: 700; display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-ui); padding: 0 4px; box-shadow: 0 0 10px rgba(192,38,211,0.6);
+    }
+    .hamburger { display: none; flex-direction: column; gap: 5px; width: 28px; cursor: pointer; }
+    .hamburger span { display: block; height: 2px; border-radius: 2px; transition: var(--transition); }
+    .hamburger span:nth-child(1) { background: var(--purple); }
+    .hamburger span:nth-child(2) { background: var(--cyan); width: 70%; }
+    .hamburger span:nth-child(3) { background: var(--purple); }
+    @media (min-width: 769px) { #header .hamburger { display: none; } }
+    @media (max-width: 768px) {
+      body.has-sidenav { padding-left: 0; }
+      #header { left: 0; }
+      .logo-wrap { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+      .logo-icon {
+        width: 32px; height: 32px;
+        background: linear-gradient(135deg, var(--purple), var(--purple-bright));
+        border-radius: 9px; display: flex; align-items: center; justify-content: center;
+        font-family: var(--font-display); font-weight: 900; font-size: 0.85rem; color: #fff;
+      }
+      .logo-text { font-family: var(--font-display); font-size: 0.9rem; font-weight: 800; color: var(--text-white); }
+      .logo-text .accent { color: var(--purple); }
+      .hamburger { display: flex; }
+      #sidenav { transform: translateX(-100%); }
+      #sidenav.open { transform: translateX(0); }
+      .sidenav-overlay {
+        position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 1000;
+        opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+      }
+      .sidenav-overlay.active { opacity: 1; pointer-events: all; }
+    }
+    /* page content below header */
+    .page-content-wrap { padding-top: 64px; }
+
+  </style>
+</head>
+
+<body class="has-sidenav">
+  <div class="sidenav-overlay" id="sidenavOverlay" onclick="closeSidenav()"></div>
+  <aside id="sidenav">
+    <a href="index.html" class="sidenav-logo">
+      <div class="sidenav-logo-icon">N</div>
+      <span class="sidenav-logo-text">NEME<span class="accent">XIS</span></span>
+    </a>
+    <a href="index.html" class="sidenav-login-btn">
+      <i class="fas fa-user-circle"></i>
+      <span>Login / Register</span>
+    </a>
+    <div class="sidenav-section-label">Navigation</div>
+    <ul>
+      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+      <li><a href="index.html#products"><i class="fas fa-gamepad"></i> Products</a></li>
+      <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+      <li><a href="Orders.html"><i class="fas fa-receipt"></i> My Orders</a></li>
+    </ul>
+    <div class="sidenav-bottom">
+      <div class="sidenav-version">⚡ NEMEXIS v3.0 · Gaming Store</div>
+    </div>
+  </aside>
+  <header id="header">
+    <a href="index.html" class="logo-wrap">
+      <div class="logo-icon">N</div>
+      <span class="logo-text">NEME<span class="accent">XIS</span></span>
+    </a>
+    <div class="nav-actions">
+      <div class="hamburger" onclick="toggleSidenav()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- ── Header ── -->
+  
+
+  <!-- ── Contact Section ── -->
+  <main>
+    <section id="contact" class="section-pad">
+
+      <span class="section-label"><i class="fas fa-headset"></i> Support</span>
+      <h1 class="section-heading" style="max-width:640px;">
+        Tell us about your order —<br>
+        <span class="gradient-text">we'll fix it fast</span>
+      </h1>
+      <p class="section-sub" style="margin-bottom:48px;">
+        Select your order, choose an issue, and attach a receipt if you can. We'll reply within a few hours.
+      </p>
+
+      <!-- Info Cards -->
+      <div class="contact-info-row">
+        <div class="contact-info-card">
+          <div class="ci-icon ci-green"><i class="fab fa-whatsapp"></i></div>
+          <div class="ci-label">WhatsApp</div>
+          <div class="ci-value">+91 70999 74271<br><span style="font-size:0.75rem;color:var(--text-dim)">Fastest response</span></div>
+        </div>
+        <div class="contact-info-card">
+          <div class="ci-icon ci-purple"><i class="fas fa-envelope"></i></div>
+          <div class="ci-label">Email</div>
+          <div class="ci-value">nemexisz999@gmail.com<br><span style="font-size:0.75rem;color:var(--text-dim)">Within a few hours</span></div>
+        </div>
+        <div class="contact-info-card">
+          <div class="ci-icon ci-cyan"><i class="fas fa-clock"></i></div>
+          <div class="ci-label">Response Time</div>
+          <div class="ci-value">Under 2 hours<br><span style="font-size:0.75rem;color:var(--text-dim)">Mon – Sun, 9AM–10PM</span></div>
+        </div>
+      </div>
+
+      <!-- Tab Switcher -->
+      <div class="contact-tabs">
+        <button class="contact-tab active" onclick="switchContactTab(this,'order-help')">
+          <i class="fas fa-ticket-alt" style="margin-right:6px;opacity:.85"></i>Order Help
+        </button>
+        <button class="contact-tab" onclick="switchContactTab(this,'general-query')">
+          <i class="fas fa-comment-dots" style="margin-right:6px;opacity:.85"></i>General Query
+        </button>
+      </div>
+
+      <!-- ── ORDER HELP PANEL ── -->
+      <div id="panel-order-help" class="contact-panel active">
+        <div class="contact-box">
+          <form id="orderHelpForm" onsubmit="submitOrderTicket(event)">
+
+            <!-- Select Order -->
+            <div class="form-group">
+              <label class="form-label" for="ticketOrderSearch">
+                <i class="fas fa-receipt" style="margin-right:5px;color:var(--purple)"></i>
+                Select Your Order
+              </label>
+              <div style="position:relative;">
+                <i class="fas fa-search" style="position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--text-dim);font-size:0.82rem;pointer-events:none;"></i>
+                <input
+                  type="text"
+                  class="form-input"
+                  id="ticketOrderSearch"
+                  placeholder="Search by Order ID (e.g., KZ...)"
+                  style="padding-left:42px;"
+                />
+              </div>
+            </div>
+
+            <!-- Issue -->
+            <div class="form-group">
+              <label class="form-label" for="ticketIssue">
+                <i class="fas fa-exclamation-circle" style="margin-right:5px;color:var(--purple)"></i>
+                What is the issue?
+              </label>
+              <select class="form-select" id="ticketIssue" required>
+                <option value="" disabled selected>Select an issue</option>
+                <option value="not-received">Diamonds / Currency not received</option>
+                <option value="wrong-amount">Wrong amount credited</option>
+                <option value="wrong-id">Wrong Player ID used</option>
+                <option value="payment-deducted">Payment deducted but no order</option>
+                <option value="delayed">Order is delayed</option>
+                <option value="refund">Requesting a refund</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <!-- Description -->
+            <div class="form-group">
+              <label class="form-label" for="ticketDescription">
+                <i class="fas fa-align-left" style="margin-right:5px;color:var(--purple)"></i>
+                Describe the problem
+              </label>
+              <textarea
+                class="form-textarea"
+                id="ticketDescription"
+                placeholder="Please provide as much detail as possible…"
+                required
+              ></textarea>
+            </div>
+
+            <!-- Attach Receipt -->
+            <div class="form-group">
+              <label class="form-label">
+                <i class="fas fa-paperclip" style="margin-right:5px;color:var(--purple)"></i>
+                Attach Receipt
+                <span style="text-transform:none;letter-spacing:0;color:var(--text-dim);margin-left:4px;">(optional)</span>
+              </label>
+              <div class="file-upload-wrap">
+                <label class="file-upload-btn" for="ticketReceipt">
+                  <i class="fas fa-upload"></i> Choose File
+                </label>
+                <input
+                  type="file"
+                  id="ticketReceipt"
+                  accept="image/*,.pdf"
+                  style="display:none"
+                  onchange="updateFileName(this,'receiptFileName')"
+                />
+                <span class="file-name-display" id="receiptFileName">No file chosen</span>
+              </div>
+            </div>
+
+            <!-- Email + Phone -->
+            <div class="form-row-2" style="margin-bottom:20px;">
+              <div class="form-group" style="margin-bottom:0">
+                <label class="form-label" for="ticketEmail">
+                  <i class="fas fa-envelope" style="margin-right:5px;color:var(--purple)"></i>
+                  Your Email
+                </label>
+                <input type="email" class="form-input" id="ticketEmail" placeholder="you@email.com" required />
+              </div>
+              <div class="form-group" style="margin-bottom:0">
+                <label class="form-label" for="ticketPhone">
+                  <i class="fab fa-whatsapp" style="margin-right:5px;color:var(--green)"></i>
+                  Your Phone (WhatsApp)
+                </label>
+                <input type="tel" class="form-input" id="ticketPhone" placeholder="+91 XXXXXXXXXX" />
+              </div>
+            </div>
+
+            <!-- Checkbox -->
+            <label class="form-check">
+              <input type="checkbox" id="ticketConfirm" required />
+              <span class="form-check-label">
+                I confirm the details are correct. I understand submitting false information may lead to account suspension.
+              </span>
+            </label>
+
+            <!-- Submit -->
+            <button type="submit" class="btn-primary" id="orderSubmitBtn" style="width:100%;justify-content:center;font-size:0.75rem;padding:15px 20px;">
+              <i class="fas fa-paper-plane"></i> Create Support Ticket
+            </button>
+
+          </form>
+        </div>
+      </div>
+
+      <!-- ── GENERAL QUERY PANEL ── -->
+      <div id="panel-general-query" class="contact-panel">
+        <div class="contact-box">
+
+          <div class="contact-sub-title">General Inquiry</div>
+          <p class="contact-sub-text">
+            For questions about partnerships, media, or other topics not related to a specific order.
+          </p>
+
+          <form id="generalQueryForm" onsubmit="submitGeneralTicket(event)">
+
+            <!-- Topic -->
+            <div class="form-group">
+              <label class="form-label" for="generalTopic">
+                <i class="fas fa-tag" style="margin-right:5px;color:var(--purple)"></i>
+                Topic
+              </label>
+              <select class="form-select" id="generalTopic" required>
+                <option value="" disabled selected>Select a topic</option>
+                <option value="partnership">Partnership / Collaboration</option>
+                <option value="media">Media / Press</option>
+                <option value="bulk">Bulk Orders / Reseller</option>
+                <option value="feedback">Feedback / Suggestion</option>
+                <option value="technical">Technical Issue (Website)</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+              <label class="form-label" for="generalEmail">
+                <i class="fas fa-envelope" style="margin-right:5px;color:var(--purple)"></i>
+                Your Email
+              </label>
+              <input type="email" class="form-input" id="generalEmail" placeholder="you@email.com" required />
+            </div>
+
+            <!-- Phone -->
+            <div class="form-group">
+              <label class="form-label" for="generalPhone">
+                <i class="fab fa-whatsapp" style="margin-right:5px;color:var(--green)"></i>
+                Your Phone
+                <span style="text-transform:none;letter-spacing:0;color:var(--text-dim);margin-left:4px;">(WhatsApp, Optional)</span>
+              </label>
+              <input type="tel" class="form-input" id="generalPhone" placeholder="+91 XXXXXXXXXX" />
+            </div>
+
+            <!-- Message -->
+            <div class="form-group">
+              <label class="form-label" for="generalMessage">
+                <i class="fas fa-comment-alt" style="margin-right:5px;color:var(--purple)"></i>
+                Your Message
+              </label>
+              <textarea
+                class="form-textarea"
+                id="generalMessage"
+                placeholder="How can we help you?"
+                style="min-height:135px"
+                required
+              ></textarea>
+            </div>
+
+            <!-- Checkbox -->
+            <label class="form-check">
+              <input type="checkbox" id="generalConfirm" required />
+              <span class="form-check-label">
+                I confirm the details are correct. We can reach out on the above email / phone.
+              </span>
+            </label>
+
+            <!-- Submit -->
+            <button type="submit" class="btn-primary" id="generalSubmitBtn" style="width:100%;justify-content:center;font-size:0.75rem;padding:15px 20px;">
+              <i class="fas fa-paper-plane"></i> Create Support Ticket
+            </button>
+
+          </form>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- ── Footer ── -->
+  
+
+  <a href="https://wa.me/917099974271" target="_blank" class="wa-float" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script>
+    /* ── Auth helpers ── */
+    function getToken()  { return localStorage.getItem('nemexis_token'); }
+    function getUser()   { try { return JSON.parse(localStorage.getItem('nemexis_user')); } catch { return null; } }
+    function clearToken(){ localStorage.removeItem('nemexis_token'); }
+    function clearUser() { localStorage.removeItem('nemexis_user'); }
+    function isLoggedIn(){ return !!getToken(); }
+
+    /* ── Nav ── */
+    function toggleMobileNav() {
+      document.getElementById('navbar').classList.toggle('open');
+    }
+    window.addEventListener('scroll', () => {
+      document.getElementById('header').classList.toggle('scrolled', window.scrollY > 40);
+    });
+    function handleNavAuthClick() {
+      if (isLoggedIn()) {
+        clearToken(); clearUser();
+        updateNavAuthState();
+        showToast('Logged out successfully.', 'success');
+        setTimeout(() => window.location.href = 'index.html', 1000);
+      } else {
+        window.location.href = 'index.html';
+      }
+    }
+    function updateNavAuthState() {
+      const btn = document.getElementById('navAuthBtn');
+      const label = document.getElementById('navAuthLabel');
+      const icon  = document.getElementById('navAuthIcon');
+      const user  = getUser();
+      if (isLoggedIn() && user) {
+        const name = (user.name || 'User').split(' ')[0].substring(0,10);
+        label.textContent = name;
+        icon.className    = 'fas fa-sign-out-alt';
+        btn.style.color       = 'var(--cyan)';
+        btn.style.borderColor = 'rgba(0,212,255,0.35)';
+        btn.style.background  = 'rgba(0,212,255,0.07)';
+      } else {
+        label.textContent = 'Login';
+        icon.className    = 'fas fa-user-circle';
+        btn.style.color = btn.style.borderColor = btn.style.background = '';
+      }
+    }
+
+    /* ── Toast ── */
+    function showToast(msg, type = 'success') {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      toast.className = `toast ${type}`;
+      const icon = type === 'success' ? 'fa-check-circle' : 'fa-exclamation-circle';
+      toast.innerHTML = `<i class="fas ${icon}"></i><span>${msg}</span>`;
+      container.appendChild(toast);
+      setTimeout(() => toast.remove(), 4200);
+    }
+
+    /* ── Contact Tab Switch ── */
+    function switchContactTab(btn, panelId) {
+      document.querySelectorAll('.contact-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.contact-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('panel-' + panelId).classList.add('active');
+    }
+
+    /* ── File Name ── */
+    function updateFileName(input, displayId) {
+      const el = document.getElementById(displayId);
+      if (el) el.textContent = input.files[0] ? input.files[0].name : 'No file chosen';
+    }
+
+    /* ── Submit: Order Help ── */
+    function submitOrderTicket(e) {
+      e.preventDefault();
+      const btn = document.getElementById('orderSubmitBtn');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting…';
+      /* ── Wire this to your backend API e.g. POST /api/support/ticket ── */
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Create Support Ticket';
+        document.getElementById('orderHelpForm').reset();
+        document.getElementById('receiptFileName').textContent = 'No file chosen';
+        showToast('Support ticket submitted! We\'ll reply within a few hours.', 'success');
+      }, 1200);
+    }
+
+    /* ── Submit: General Query ── */
+    function submitGeneralTicket(e) {
+      e.preventDefault();
+      const btn = document.getElementById('generalSubmitBtn');
+      btn.disabled = true;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting…';
+      /* ── Wire this to your backend API ── */
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Create Support Ticket';
+        document.getElementById('generalQueryForm').reset();
+        showToast('Your inquiry has been sent! We\'ll get back to you soon.', 'success');
+      }, 1200);
+    }
+
+    /* ── Init ── */
+    updateNavAuthState();
+  </script>
+
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h2>NEME<span class="accent">XIS</span> OFFICIAL</h2>
+        <p>India's trusted gaming top-up platform. We power up your game with instant MLBB diamonds, BGMI UC, Genshin crystals, and more — at the best prices.</p>
+        <div class="footer-contact">
+          <p><i class="fas fa-phone" style="color:var(--purple);margin-right:8px"></i>+91 70999 74271</p>
+          <p><i class="fas fa-envelope" style="color:var(--purple);margin-right:8px"></i>nemexisz999@gmail.com</p>
+        </div>
+        <div class="social-row">
+          <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/917099974271" target="_blank" class="social-btn" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" class="social-btn" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+          <a href="#" class="social-btn" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#products">Games</a></li>
+          <li><a href="Orders.html">My Orders</a></li>
+          <li><a href="contact.html">Customer Support</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms &amp; Conditions</a></li>
+          <li><a href="refund.html">Refund Policy</a></li>
+          <li><a href="cookies.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Payments</h4>
+        <div class="footer-pay-chips">
+          <span class="footer-pay-chip">GPay</span>
+          <span class="footer-pay-chip">PhonePe</span>
+          <span class="footer-pay-chip">BHIM UPI</span>
+          <span class="footer-pay-chip">Razorpay</span>
+          <span class="footer-pay-chip">Cards</span>
+          <span class="footer-pay-chip">Net Banking</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Nemexis Official. All rights reserved. Made with ❤️ for gamers in India.</p>
+      <div class="footer-bottom-links">
+        <a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refund</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleSidenav() {
+      document.getElementById('sidenav').classList.toggle('open');
+      document.getElementById('sidenavOverlay').classList.toggle('active');
+    }
+    function closeSidenav() {
+      document.getElementById('sidenav').classList.remove('open');
+      document.getElementById('sidenavOverlay').classList.remove('active');
+    }
+    window.addEventListener('scroll', () => {
+      document.getElementById('header').classList.toggle('scrolled', window.scrollY > 60);
+    });
+  </script>
+
+</body>
+</html>
